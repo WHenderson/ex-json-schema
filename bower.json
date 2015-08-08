@@ -26,5 +26,6 @@
     "coverage",
     "test",
     "tests"
-  ]
+  ],
+  "version": "0.0.0-prerelease"
 }
