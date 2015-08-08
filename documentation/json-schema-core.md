@@ -1,5 +1,4 @@
-#
-JSON Schema: core definitions and terminology
+# JSON Schema: core definitions and terminology
 json-schema-core
 
 ### Abstract
@@ -28,46 +27,46 @@ This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relatin
 
 ### Table of Contents
 
-[1.](#anchor1)  Introduction
- [2.](#anchor2)  Conventions and Terminology
- [3.](#anchor3)  Core terminology
-     [3.1.](#anchor4)  Property, item
-     [3.2.](#anchor5)  JSON Schema, keywords
-     [3.3.](#anchor6)  Empty schema
-     [3.4.](#anchor7)  Root schema, subschema
-     [3.5.](#anchor8)  JSON Schema primitive types
-     [3.6.](#anchor9)  JSON value equality
-     [3.7.](#anchor10)  Instance
- [4.](#anchor11)  Overview
-     [4.1.](#anchor12)  Validation
-     [4.2.](#anchor13)  Hypermedia and linking
- [5.](#anchor14)  General considerations
-     [5.1.](#anchor15)  Applicability to all JSON values
-     [5.2.](#anchor16)  Programming language independence
-     [5.3.](#anchor17)  JSON Schema and HTTP
-     [5.4.](#anchor18)  JSON Schema and other protocols
-     [5.5.](#anchor19)  Mathematical integers
-     [5.6.](#anchor20)  Extending JSON Schema
-     [5.7.](#anchor21)  Security considerations
- [6.](#anchor22)  The "$schema" keyword
-     [6.1.](#anchor23)  Purpose
-     [6.2.](#anchor24)  Customization
- [7.](#anchor25)  URI resolution scopes and dereferencing
-     [7.1.](#anchor26)  Definition
-     [7.2.](#anchor27)  URI resolution scope alteration with the "id" keyword
-         [7.2.1.](#anchor28)  Valid values
-         [7.2.2.](#anchor29)  Usage
-         [7.2.3.](#anchor30)  Canonical dereferencing and inline dereferencing
-         [7.2.4.](#anchor31)  Inline dereferencing and fragments
-     [7.3.](#anchor32)  Security considerations
- [8.](#anchor33)  Recommended correlation mechanisms for use with the HTTP protocol
-     [8.1.](#anchor34)  Correlation by means of the "Content-Type" header
-     [8.2.](#anchor35)  Correlation by means of the "Link" header
- [9.](#anchor36)  IANA Considerations
- [10.](#rfc.references1)  References
-     [10.1.](#rfc.references1)  Normative References
-     [10.2.](#rfc.references2)  Informative References
- [Appendix A.](#anchor39)  ChangeLog
++ [1.](#anchor1)  Introduction
++ [2.](#anchor2)  Conventions and Terminology
++ [3.](#anchor3)  Core terminology
+	+ [3.1.](#anchor4)  Property, item
+	+ [3.2.](#anchor5)  JSON Schema, keywords
+	+ [3.3.](#anchor6)  Empty schema
+	+ [3.4.](#anchor7)  Root schema, subschema
+	+ [3.5.](#anchor8)  JSON Schema primitive types
+	+ [3.6.](#anchor9)  JSON value equality
+	+ [3.7.](#anchor10)  Instance
++ [4.](#anchor11)  Overview
+	+ [4.1.](#anchor12)  Validation
+	+ [4.2.](#anchor13)  Hypermedia and linking
++ [5.](#anchor14)  General considerations
+	+ [5.1.](#anchor15)  Applicability to all JSON values
+	+ [5.2.](#anchor16)  Programming language independence
+	+ [5.3.](#anchor17)  JSON Schema and HTTP
+	+ [5.4.](#anchor18)  JSON Schema and other protocols
+	+ [5.5.](#anchor19)  Mathematical integers
+	+ [5.6.](#anchor20)  Extending JSON Schema
+	+ [5.7.](#anchor21)  Security considerations
++ [6.](#anchor22)  The "$schema" keyword
+	+ [6.1.](#anchor23)  Purpose
+	+ [6.2.](#anchor24)  Customization
++ [7.](#anchor25)  URI resolution scopes and dereferencing
+	+ [7.1.](#anchor26)  Definition
+	+ [7.2.](#anchor27)  URI resolution scope alteration with the "id" keyword
+		+ [7.2.1.](#anchor28)  Valid values
+		+ [7.2.2.](#anchor29)  Usage
+		+ [7.2.3.](#anchor30)  Canonical dereferencing and inline dereferencing
+		+ [7.2.4.](#anchor31)  Inline dereferencing and fragments
+	+ [7.3.](#anchor32)  Security considerations
++ [8.](#anchor33)  Recommended correlation mechanisms for use with the HTTP protocol
+	+ [8.1.](#anchor34)  Correlation by means of the "Content-Type" header
+	+ [8.2.](#anchor35)  Correlation by means of the "Link" header
++ [9.](#anchor36)  IANA Considerations
++ [10.](#rfc.references1)  References
+	+ [10.1.](#rfc.references1)  Normative References
+	+ [10.2.](#rfc.references2)  Informative References
++ [Appendix A.](#anchor39)  ChangeLog
 
 <a name="anchor1"></a>
 
