@@ -1,0 +1,24 @@
+{
+  "name": "ex-json-schema",
+  "version": "0.0.0-prerelease",
+  "description": "Extensible Json Schema Validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WHenderson/ex-json-schema.git"
+  },
+  "keywords": [
+    "json",
+    "schema",
+    "validator"
+  ],
+  "author": "Will Henderson <whenderson.github@gmail.com> (https://github.com/WHenderson)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/WHenderson/ex-json-schema/issues"
+  },
+  "homepage": "https://github.com/WHenderson/ex-json-schema#readme"
+}
