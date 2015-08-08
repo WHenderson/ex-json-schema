@@ -1,0 +1,30 @@
+{
+  "name": "ex-json-schema",
+  "main": [
+    "lib/ex-json-schema.coffee"
+  ],
+  "homepage": "https://github.com/WHenderson/ex-json-schema",
+  "authors": [
+    "WHenderson <whenderson.github@gmail.com>"
+  ],
+  "description": "Extensible Json Schema Validator",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "json",
+    "schema",
+    "validator"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "coverage",
+    "test",
+    "tests"
+  ]
+}
