@@ -200,37 +200,28 @@ In this example, "nested" and "alsoNested" are subschemas, and "root" is a root 
 
 JSON Schema defines seven primitive types for JSON values:
 
-> <dl>
->
-> <dt>array</dt>
->
-> <dd>A JSON array.</dd>
->
-> <dt>boolean</dt>
->
-> <dd>A JSON boolean.</dd>
->
-> <dt>integer</dt>
->
-> <dd>A JSON number without a fraction or exponent part.</dd>
->
-> <dt>number</dt>
->
-> <dd>Any JSON number. Number includes integer.</dd>
->
-> <dt>null</dt>
->
-> <dd>The JSON null value.</dd>
->
-> <dt>object</dt>
->
-> <dd>A JSON object.</dd>
->
-> <dt>string</dt>
->
-> <dd>A JSON string.</dd>
->
-> </dl>
+#### array
+A JSON array.
+
+#### boolean
+A JSON boolean.
+
+#### integer
+A JSON number without a fraction or exponent part.
+
+#### number
+Any JSON number. Number includes integer.
+
+#### null
+The JSON null value.
+
+#### object
+A JSON object.
+
+#### string
+A JSON string.
+
+
 
 <a name="anchor9"></a>
 
@@ -244,25 +235,16 @@ JSON Schema defines seven primitive types for JSON values:
 
 Two JSON values are said to be equal if and only if:
 
-> both are nulls; or
->
-> both are booleans, and have the same value; or
->
-> both are strings, and have the same value; or
->
-> both are numbers, and have the same mathematical value; or
->
-> both are arrays, and:
->
-> > have the same number of items; and
-> >
-> > items at the same index are equal according to this definition; or
->
-> both are objects, and:
->
-> > have the same set of property names; and
-> >
-> > values for a same property name are equal according to this definition.
++ both are nulls; or
++ both are booleans, and have the same value; or
++ both are strings, and have the same value; or
++ both are numbers, and have the same mathematical value; or
++ both are arrays, and:
+	+ have the same number of items; and
+	+ items at the same index are equal according to this definition; or
++ both are objects, and:
+	+ have the same set of property names; and
+	+ values for a same property name are equal according to this definition.
 
 <a name="anchor10"></a>
 
@@ -438,33 +420,18 @@ This keyword MUST be located at the root of a JSON Schema. The value of this key
 
 The following values are predefined:
 
-> <dl>
->
-> <dt>http://json-schema.org/schema#</dt>
->
-> <dd>JSON Schema written against the current version of the specification.</dd>
->
-> <dt>http://json-schema.org/hyper-schema#</dt>
->
-> <dd>JSON Schema written against the current version of the specification.</dd>
->
-> <dt>http://json-schema.org/draft-04/schema#</dt>
->
-> <dd>JSON Schema written against this version.</dd>
->
-> <dt>http://json-schema.org/draft-04/hyper-schema#</dt>
->
-> <dd>JSON Schema hyperschema written against this version.</dd>
->
-> <dt>http://json-schema.org/draft-03/schema#</dt>
->
-> <dd>JSON Schema written against [JSON Schema, draft v3 <span>(</span><span class="info">Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.</span><span>)</span>](#json-schema-03) [json-schema-03].</dd>
->
-> <dt>http://json-schema.org/draft-03/hyper-schema#</dt>
->
-> <dd>JSON Schema hyperschema written against [JSON Schema, draft v3 <span>(</span><span class="info">Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.</span><span>)</span>](#json-schema-03) [json-schema-03].</dd>
->
-> </dl>
++ http://json-schema.org/schema#
+	+ JSON Schema written against the current version of the specification.
++ http://json-schema.org/hyper-schema#
+	+ JSON Schema written against the current version of the specification.
++ http://json-schema.org/draft-04/schema#
+	+ JSON Schema written against this version.
++ http://json-schema.org/draft-04/hyper-schema#
+	+ JSON Schema hyperschema written against this version.
++ http://json-schema.org/draft-03/schema#
+	+ JSON Schema written against [JSON Schema, draft v3 <span>(</span><span class="info">Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.</span><span>)</span>](#json-schema-03) [json-schema-03].
++ http://json-schema.org/draft-03/hyper-schema#
+	+ JSON Schema hyperschema written against [JSON Schema, draft v3 <span>(</span><span class="info">Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.</span><span>)</span>](#json-schema-03) [json-schema-03].
 
 <a name="anchor24"></a>
 
@@ -571,33 +538,33 @@ This schema will be taken as an example:
 
 Subschemas at the following URI-encoded [JSON Pointer <span>(</span><span class="info">Bryan, P. and K. Zyp, “JSON Pointer (work in progress),” September 2012.</span><span>)</span>](#json-pointer) [json-pointer]s (starting from the root schema) define the following resolution scopes:
 
-> <dl>
+> 
 >
-> <dt># (document root)</dt>
+> # (document root)
 >
-> <dd>http://x.y.z/rootschema.json#</dd>
+> http://x.y.z/rootschema.json#
 >
-> <dt>#/schema1</dt>
+> #/schema1
 >
-> <dd>http://x.y.z/rootschema.json#foo</dd>
+> http://x.y.z/rootschema.json#foo
 >
-> <dt>#/schema2</dt>
+> #/schema2
 >
-> <dd>http://x.y.z/otherschema.json#</dd>
+> http://x.y.z/otherschema.json#
 >
-> <dt>#/schema2/nested</dt>
+> #/schema2/nested
 >
-> <dd>http://x.y.z/otherschema.json#bar</dd>
+> http://x.y.z/otherschema.json#bar
 >
-> <dt>#/schema2/alsonested</dt>
+> #/schema2/alsonested
 >
-> <dd>http://x.y.z/t/inner.json#a</dd>
+> http://x.y.z/t/inner.json#a
 >
-> <dt>#/schema3</dt>
+> #/schema3
 >
-> <dd>some://where.else/completely#</dd>
+> some://where.else/completely#
 >
-> </dl>
+> 
 
 <a name="anchor30"></a>
 
@@ -611,17 +578,17 @@ Subschemas at the following URI-encoded [JSON Pointer <span>(</span><span class=
 
 When resolving a URI against a resolution scope, an implementation may choose two modes of operation:
 
-> <dl>
+> 
 >
-> <dt>canonical dereferencing</dt>
+> canonical dereferencing
 >
-> <dd>The implementation dereferences all resolved URIs.</dd>
+> The implementation dereferences all resolved URIs.
 >
-> <dt>inline dereferencing</dt>
+> inline dereferencing
 >
-> <dd>The implementation chooses to dereference URIs within the schema.</dd>
+> The implementation chooses to dereference URIs within the schema.
 >
-> </dl>
+> 
 
 Implementations MUST support canonical dereferencing, and MAY support inline dereferencing.
 
@@ -817,11 +784,11 @@ The proposed MIME media type for JSON Schema is defined as follows:
 
 ### Appendix A.  ChangeLog
 
-> <dl>
+> 
 >
-> <dt>draft-00</dt>
+> draft-00
 >
-> <dd>
+> 
 >
 > *   Initial draft.
 > *   Salvaged from draft v3.
@@ -829,9 +796,9 @@ The proposed MIME media type for JSON Schema is defined as follows:
 > *   Define the role of "id". Define URI resolution scope.
 > *   Add interoperability considerations.
 >
-> </dd>
+> 
 >
-> </dl>
+> 
 
 <a name="rfc.authors"></a>
 
