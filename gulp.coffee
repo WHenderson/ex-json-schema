@@ -79,7 +79,10 @@ gulpClean = () ->
 gulpBuild = () ->
   gulp
   .src([
-      'src/context.coffee'
+      'src/error/error.coffee'
+      'src/context/context.coffee'
+      'src/engine/engine.coffee'
+      'src/engine/core/*.coffee'
     ])
   .pipe(gConcat('ex-json-schema.coffee', {newLine: '\r\n'}))
   .pipe(gCoffeeLint())
