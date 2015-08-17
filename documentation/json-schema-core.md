@@ -3,7 +3,7 @@
 
 ### Abstract
 
-JSON Schema defines the media type "application/schema+json", a JSON based format for defining the structure of JSON data. JSON Schema provides a contract for what JSON data is required for a given application and how to interact with it. JSON Schema is intended to define validation, documentation, hyperlink navigation, and interaction control of JSON data.
+JSON Schema defines the media type `application/schema+json`, a JSON based format for defining the structure of JSON data. JSON Schema provides a contract for what JSON data is required for a given application and how to interact with it. JSON Schema is intended to define validation, documentation, hyperlink navigation, and interaction control of JSON data.
 
 ### Status of This Memo
 
@@ -25,46 +25,46 @@ This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relatin
 
 ### Table of Contents
 
-[1.  Introduction](#1.  Introduction)
-[2.  Conventions and Terminology](#2.  Conventions and Terminology)
-[3.  Core terminology](#3.  Core terminology)
-[3.1.  Property, item](#3.1.  Property, item)
-[3.2.  JSON Schema, keywords](#3.2.  JSON Schema, keywords)
-[3.3.  Empty schema](#3.3.  Empty schema)
-[3.4.  Root schema, subschema](#3.4.  Root schema, subschema)
-[3.5.  JSON Schema primitive types](#3.5.  JSON Schema primitive types)
-[3.6.  JSON value equality](#3.6.  JSON value equality)
-[3.7.  Instance](#3.7.  Instance)
-[4.  Overview](#4.  Overview)
-[4.1.  Validation](#4.1.  Validation)
-[4.2.  Hypermedia and linking](#4.2.  Hypermedia and linking)
-[5.  General considerations](#5.  General considerations)
-[5.1.  Applicability to all JSON values](#5.1.  Applicability to all JSON values)
-[5.2.  Programming language independence](#5.2.  Programming language independence)
-[5.3.  JSON Schema and HTTP](#5.3.  JSON Schema and HTTP)
-[5.4.  JSON Schema and other protocols](#5.4.  JSON Schema and other protocols)
-[5.5.  Mathematical integers](#5.5.  Mathematical integers)
-[5.6.  Extending JSON Schema](#5.6.  Extending JSON Schema)
-[5.7.  Security considerations](#5.7.  Security considerations)
-[6.  The "$schema" keyword](#6.  The "$schema" keyword)
-[6.1.  Purpose](#6.1.  Purpose)
-[6.2.  Customization](#6.2.  Customization)
-[7.  URI resolution scopes and dereferencing](#7.  URI resolution scopes and dereferencing)
-[7.1.  Definition](#7.1.  Definition)
-[7.2.  URI resolution scope alteration with the "id" keyword](#7.2.  URI resolution scope alteration with the "id" keyword)
- [7.2.1.  Valid values](#7.2.1.  Valid values)
- [7.2.2.  Usage](#7.2.2.  Usage)
- [7.2.3.  Canonical dereferencing and inline dereferencing](#7.2.3.  Canonical dereferencing and inline dereferencing)
- [7.2.4.  Inline dereferencing and fragments](#7.2.4.  Inline dereferencing and fragments)
-[7.3.  Security considerations](#7.3.  Security considerations)
-[8.  Recommended correlation mechanisms for use with the HTTP protocol](#8.  Recommended correlation mechanisms for use with the HTTP protocol)
-[8.1.  Correlation by means of the "Content-Type" header](#8.1.  Correlation by means of the "Content-Type" header)
-[8.2.  Correlation by means of the "Link" header](#8.2.  Correlation by means of the "Link" header)
-[9.  IANA Considerations](#9.  IANA Considerations)
-[10.  References](#10.  References)
-[10.1.  Normative References](#10.1.  Normative References)
-[10.2.  Informative References](#10.2.  Informative References)
-[Appendix A.  ChangeLog](#Appendix A.  ChangeLog)
+- [1.  Introduction](#1.  Introduction)
+- [2.  Conventions and Terminology](#2.  Conventions and Terminology)
+- [3.  Core terminology](#3.  Core terminology)
+- [3.1.  Property, item](#3.1.  Property, item)
+- [3.2.  JSON Schema, keywords](#3.2.  JSON Schema, keywords)
+- [3.3.  Empty schema](#3.3.  Empty schema)
+- [3.4.  Root schema, subschema](#3.4.  Root schema, subschema)
+- [3.5.  JSON Schema primitive types](#3.5.  JSON Schema primitive types)
+- [3.6.  JSON value equality](#3.6.  JSON value equality)
+- [3.7.  Instance](#3.7.  Instance)
+- [4.  Overview](#4.  Overview)
+- [4.1.  Validation](#4.1.  Validation)
+- [4.2.  Hypermedia and linking](#4.2.  Hypermedia and linking)
+- [5.  General considerations](#5.  General considerations)
+- [5.1.  Applicability to all JSON values](#5.1.  Applicability to all JSON values)
+- [5.2.  Programming language independence](#5.2.  Programming language independence)
+- [5.3.  JSON Schema and HTTP](#5.3.  JSON Schema and HTTP)
+- [5.4.  JSON Schema and other protocols](#5.4.  JSON Schema and other protocols)
+- [5.5.  Mathematical integers](#5.5.  Mathematical integers)
+- [5.6.  Extending JSON Schema](#5.6.  Extending JSON Schema)
+- [5.7.  Security considerations](#5.7.  Security considerations)
+- [6.  The `$schema` keyword](#6.  The `$schema` keyword)
+- [6.1.  Purpose](#6.1.  Purpose)
+- [6.2.  Customization](#6.2.  Customization)
+- [7.  URI resolution scopes and dereferencing](#7.  URI resolution scopes and dereferencing)
+- [7.1.  Definition](#7.1.  Definition)
+- [7.2.  URI resolution scope alteration with the `id` keyword](#7.2.  URI resolution scope alteration with the `id` keyword)
+-  [7.2.1.  Valid values](#7.2.1.  Valid values)
+-  [7.2.2.  Usage](#7.2.2.  Usage)
+-  [7.2.3.  Canonical dereferencing and inline dereferencing](#7.2.3.  Canonical dereferencing and inline dereferencing)
+-  [7.2.4.  Inline dereferencing and fragments](#7.2.4.  Inline dereferencing and fragments)
+- [7.3.  Security considerations](#7.3.  Security considerations)
+- [8.  Recommended correlation mechanisms for use with the HTTP protocol](#8.  Recommended correlation mechanisms for use with the HTTP protocol)
+- [8.1.  Correlation by means of the `Content-Type` header](#8.1.  Correlation by means of the `Content-Type` header)
+- [8.2.  Correlation by means of the `Link` header](#8.2.  Correlation by means of the `Link` header)
+- [9.  IANA Considerations](#9.  IANA Considerations)
+- [10.  References](#10.  References)
+- [10.1.  Normative References](#10.1.  Normative References)
+- [10.2.  Informative References](#10.2.  Informative References)
+- [Appendix A.  ChangeLog](#Appendix A.  ChangeLog)
 
 * * *
 
@@ -74,19 +74,13 @@ JSON Schema is a JSON media type for defining the structure of JSON data. JSON S
 
 This specification defines JSON Schema core terminology and mechanisms; related specifications build upon this specification and define different applications of JSON Schema.
 
-* * *
-
 ### 2.  Conventions and Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119 (Bradner, S., “Key words for use in RFCs to Indicate Requirement Levels,” March 1997.)](#RFC2119) [RFC2119].
 
 The terms "JSON", "JSON text", "JSON value", "member", "element", "object", "array", "number", "string", "boolean", "true", "false", and "null" in this document are to be interpreted as defined in [RFC 4627 (Crockford, D., “The application/json Media Type for JavaScript Object Notation (JSON),” July 2006.)](#RFC4627) [RFC4627].
 
-* * *
-
 ### 3.  Core terminology
-
-* * *
 
 ### 3.1.  Property, item
 
@@ -128,32 +122,32 @@ JSON Schemas can also be nested, as in this example:
 }
 ```
 
-In this example, "nested" and "alsoNested" are subschemas, and "root" is a root schema.
+In this example, `nested` and `alsoNested` are subschemas, and `root` is a root schema.
 
 ### 3.5.  JSON Schema primitive types
 
 JSON Schema defines seven primitive types for JSON values:
 
 - array
-A JSON array.
+ - A JSON array.
 
 - boolean
-A JSON boolean.
+ - A JSON boolean.
 
 - integer
-A JSON number without a fraction or exponent part.
+ - A JSON number without a fraction or exponent part.
 
 - number
-Any JSON number. Number includes integer.
+ - Any JSON number. Number includes integer.
 
 - null
-The JSON null value.
+ - The JSON null value.
 
 - object
-A JSON object.
+ - A JSON object.
 
 - string
-A JSON string.
+ - A JSON string.
 
 ### 3.6.  JSON value equality
 
@@ -176,11 +170,9 @@ An instance is any JSON value. An instance may be described by one or more schem
 
 An instance may also be referred to as "JSON instance", or "JSON data".
 
-* * *
-
 ### 4.  Overview
 
-This document proposes a new media type "application/schema+json" to identify JSON Schema for describing JSON data. JSON Schemas are themselves written in JSON. This, and related specifications, define keywords allowing to describe this data in terms of allowable values, textual descriptions and interpreting relations with other resources. The following sections are a summary of features defined by related specifications.
+This document proposes a new media type `application/schema+json` to identify JSON Schema for describing JSON data. JSON Schemas are themselves written in JSON. This, and related specifications, define keywords allowing to describe this data in terms of allowable values, textual descriptions and interpreting relations with other resources. The following sections are a summary of features defined by related specifications.
 
 ### 4.1.  Validation
 
@@ -189,8 +181,6 @@ JSON Schema allows applications to validate instances, either non interactively 
 ### 4.2.  Hypermedia and linking
 
 JSON Schema provides a method for extracting link relations from instances to other resources, as well as describing interpretations of instances as multimedia data. This allows JSON data to be interpreted as rich hypermedia documents, placed in the context of a larger set of related resources.
-
-* * *
 
 ### 5.  General considerations
 
@@ -226,41 +216,37 @@ Implementations MAY choose to define additional keywords to JSON Schema. Save fo
 
 Both schemas and instances are JSON values. As such, all security considerations defined in [RFC 4627 (Crockford, D., “The application/json Media Type for JavaScript Object Notation (JSON),” July 2006.)](#RFC4627) [RFC4627] apply.
 
-* * *
-
-### 6.  The "$schema" keyword
+### 6.  The `$schema` keyword
 
 ### 6.1.  Purpose
 
-The "$schema" keyword is both used as a JSON Schema version identifier and the location of a resource which is itself a JSON Schema, which describes any schema written for this particular version.
+The `$schema` keyword is both used as a JSON Schema version identifier and the location of a resource which is itself a JSON Schema, which describes any schema written for this particular version.
 
 This keyword MUST be located at the root of a JSON Schema. The value of this keyword MUST be a [URI (Berners-Lee, T., Fielding, R., and L. Masinter, “Uniform Resource Identifier (URI): Generic Syntax,” January 2005.)](#RFC3986) [RFC3986] and a valid [JSON Reference (Bryan, P. and K. Zyp, “JSON Reference (work in progress),” September 2012.)](#json-reference) [json-reference]; this URI MUST be both absolute and normalized. The resource located at this URI MUST successfully describe itself. It is RECOMMENDED that schema authors include this keyword in their schemas.
 
 The following values are predefined:
 
 - http://json-schema.org/schema#
-JSON Schema written against the current version of the specification.
+ - JSON Schema written against the current version of the specification.
 
 - http://json-schema.org/hyper-schema#
-JSON Schema written against the current version of the specification.
+ - JSON Schema written against the current version of the specification.
 
 - http://json-schema.org/draft-04/schema#
-JSON Schema written against this version.
+ - JSON Schema written against this version.
 
 - http://json-schema.org/draft-04/hyper-schema#
-JSON Schema hyperschema written against this version.
+ - JSON Schema hyperschema written against this version.
 
 - http://json-schema.org/draft-03/schema#
-JSON Schema written against [JSON Schema, draft v3 (Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.)](#json-schema-03) [json-schema-03].
+ - JSON Schema written against [JSON Schema, draft v3 (Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.)](#json-schema-03) [json-schema-03].
 
 - http://json-schema.org/draft-03/hyper-schema#
-JSON Schema hyperschema written against [JSON Schema, draft v3 (Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.)](#json-schema-03) [json-schema-03].
+ - JSON Schema hyperschema written against [JSON Schema, draft v3 (Court, G. and K. Zyp, “JSON Schema, draft 3,” September 2012.)](#json-schema-03) [json-schema-03].
 
 ### 6.2.  Customization
 
-When extending JSON Schema with custom keywords, schema authors SHOULD define a custom URI for "$schema". This custom URI MUST NOT be one of the predefined values.
-
-* * *
+When extending JSON Schema with custom keywords, schema authors SHOULD define a custom URI for `$schema`. This custom URI MUST NOT be one of the predefined values.
 
 ### 7.  URI resolution scopes and dereferencing
 
@@ -268,13 +254,13 @@ When extending JSON Schema with custom keywords, schema authors SHOULD define a 
 
 JSON Schema uses [JSON Reference (Bryan, P. and K. Zyp, “JSON Reference (work in progress),” September 2012.)](#json-reference) [json-reference] as a mechanism for schema addressing. It extends this specification in two ways:
 
-> JSON Schema offers facilities to alter the base URI against which a reference must resolve by the means of the "id" keyword;
+> JSON Schema offers facilities to alter the base URI against which a reference must resolve by the means of the `id` keyword;
 >
 > it defines a specific dereferencing mechanism extending JSON Reference to accept arbitrary fragment parts.
 
 Altering the URI within a schema is called defining a new resolution scope. The initial resolution scope of a schema is the URI of the schema itself, if any, or the empty URI if the schema was not loaded from a URI.
 
-### 7.2.  URI resolution scope alteration with the "id" keyword
+### 7.2.  URI resolution scope alteration with the `id` keyword
 
 ### 7.2.1.  Valid values
 
@@ -282,9 +268,9 @@ The value for this keyword MUST be a string, and MUST be a valid URI. This URI M
 
 ### 7.2.2.  Usage
 
-The "id" keyword (or "id", for short) is used to alter the resolution scope. When an id is encountered, an implementation MUST resolve this id against the most immediate parent scope. The resolved URI will be the new resolution scope for this subschema and all its children, until another id is encountered.
+The `id` keyword (or `id`, for short) is used to alter the resolution scope. When an id is encountered, an implementation MUST resolve this id against the most immediate parent scope. The resolved URI will be the new resolution scope for this subschema and all its children, until another id is encountered.
 
-When using "id" to alter resolution scopes, schema authors SHOULD ensure that resolution scopes are unique within the schema.
+When using `id` to alter resolution scopes, schema authors SHOULD ensure that resolution scopes are unique within the schema.
 
 This schema will be taken as an example:
 
@@ -312,32 +298,32 @@ This schema will be taken as an example:
 Subschemas at the following URI-encoded [JSON Pointer (Bryan, P. and K. Zyp, “JSON Pointer (work in progress),” September 2012.)](#json-pointer) [json-pointer]s (starting from the root schema) define the following resolution scopes:
 
 - \# (document root)
-http://x.y.z/rootschema.json#
+ - http://x.y.z/rootschema.json#
 
 - \#/schema1
-http://x.y.z/rootschema.json#foo
+ - http://x.y.z/rootschema.json#foo
 
 - \#/schema2
-http://x.y.z/otherschema.json#
+ - http://x.y.z/otherschema.json#
 
 - \#/schema2/nested
-http://x.y.z/otherschema.json#bar
+ - http://x.y.z/otherschema.json#bar
 
 - \#/schema2/alsonested
-http://x.y.z/t/inner.json#a
+ - http://x.y.z/t/inner.json#a
 
 - \#/schema3
-some://where.else/completely#
+ - some://where.else/completely#
 
 ### 7.2.3.  Canonical dereferencing and inline dereferencing
 
 When resolving a URI against a resolution scope, an implementation may choose two modes of operation:
 
 - canonical dereferencing
-The implementation dereferences all resolved URIs.
+ - The implementation dereferences all resolved URIs.
 
 - inline dereferencing
-The implementation chooses to dereference URIs within the schema.
+ - The implementation chooses to dereference URIs within the schema.
 
 Implementations MUST support canonical dereferencing, and MAY support inline dereferencing.
 
@@ -359,7 +345,7 @@ Implementations MUST support canonical dereferencing, and MAY support inline der
 }
 ```
 
-When an implementation encounters the "schema1" reference, it resolves it against the most immediate parent scope, leading to URI "http://my.site/schema1#". The way to process this URI will differ according to the chosen dereferencing mode:
+When an implementation encounters the `schema1` reference, it resolves it against the most immediate parent scope, leading to URI "http://my.site/schema1#". The way to process this URI will differ according to the chosen dereferencing mode:
 
 - if canonical dereferencing is used, the implementation will dereference this URI, and fetch the content at this URI;
 - if inline dereferencing is used, the implementation will notice that URI scope "http://my.site/schema1#" is already defined within the schema, and choose to use the appropriate subschema.
@@ -389,25 +375,23 @@ Inline dereferencing can produce canonical URIs which differ from the canonical 
 
 Extended JSON References using fragments which are not JSON Pointers are not dereferenceable by implementations choosing not to support inline dereferencing. This kind of reference is defined for backwards compatibility, and SHOULD NOT be used in new schemas.
 
-* * *
-
 ### 8.  Recommended correlation mechanisms for use with the HTTP protocol
 
 It is acknowledged by this specification that the majority of interactive JSON Schema processing will be over HTTP. This section therefore gives recommendations for materializing an instance/schema correlation using mechanisms currently available for this protocol. An instance is said to be described by one (or more) schema(s).
 
-### 8.1.  Correlation by means of the "Content-Type" header
+### 8.1.  Correlation by means of the `Content-Type` header
 
-It is RECOMMENDED that a MIME type parameter by the name of "profile" be appended to the "Content-Type" header of the instance being processed. If present, the value of this parameter MUST be a valid URI, and this URI SHOULD resolve to a valid JSON Schema. The MIME type MUST be "application/json", or any other subtype.
+It is RECOMMENDED that a MIME type parameter by the name of `profile` be appended to the `Content-Type` header of the instance being processed. If present, the value of this parameter MUST be a valid URI, and this URI SHOULD resolve to a valid JSON Schema. The MIME type MUST be `application/json`, or any other subtype.
 
 An example of such a header would be:
 
 ```http
-Content-Type: application/my-media-type+json;profile=http://example.com/my-hyper-schema#
+Content-Type: application/my-media-type+json; profile=http://example.com/my-hyper-schema#
 ```
 
-### 8.2.  Correlation by means of the "Link" header
+### 8.2.  Correlation by means of the `Link` header
 
-When using the "Link" header, the relation type used MUST be "describedBy", as defined by [RFC 5988, section 5.3 (Nottingham, M., “Web Linking,” October 2010.)](#RFC5988) [RFC5988]. The target URI of the "Link" header MUST be a valid JSON Schema.
+When using the `Link` header, the relation type used MUST be `describedBy`, as defined by [RFC 5988, section 5.3 (Nottingham, M., “Web Linking,” October 2010.)](#RFC5988) [RFC5988]. The target URI of the `Link` header MUST be a valid JSON Schema.
 
 An example of such a header would be:
 
@@ -415,14 +399,12 @@ An example of such a header would be:
 Link: <http://example.com/my-hyper-schema#>; rel="describedBy"
 ```
 
-* * *
-
 ### 9.  IANA Considerations
 
 The proposed MIME media type for JSON Schema is defined as follows:
 
-- type name: application;
-- subtype name: schema+json.
+- type name: `application`
+- subtype name: `schema+json`
 
 * * *
 
@@ -454,7 +436,7 @@ The proposed MIME media type for JSON Schema is defined as follows:
  - Initial draft.
  - Salvaged from draft v3.
  - Mandate the use of JSON Reference, JSON Pointer.
- - Define the role of "id". Define URI resolution scope.
+ - Define the role of `id`. Define URI resolution scope.
  - Add interoperability considerations.
 
 * * *
@@ -464,14 +446,14 @@ The proposed MIME media type for JSON Schema is defined as follows:
 - Francis Galiegue
  - EMail: [fgaliegue@gmail.com](mailto:fgaliegue@gmail.com)
 
-- Kris Zyp (editor) 
+- Kris Zyp (editor)
 SitePen (USA)
-530 Lytton Avenue 
+530 Lytton Avenue
 Palo Alto, CA 94301
 USA
  - Phone: +1 650 968 878
  - EMail: [kris@sitepen.com](mailto:kris@sitepen.com)
- 
+
 - Gary Court
 Calgary, AB
 Canada

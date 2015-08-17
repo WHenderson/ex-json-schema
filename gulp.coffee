@@ -20,14 +20,14 @@ pipeCoffee = gLazy()
   module.exports = <%= exports %>
   '''
     exports: (file) ->
-      'ExJsonSchema'
+      'Engine'
   })
 
 pipeNode = gLazy()
 .pipe(gUmd,{
     templateName: 'node',
     exports: (file) ->
-      'ExJsonSchema'
+      'Engine'
     namespace: (file) ->
       'exJsonSchema'
   })
@@ -39,7 +39,7 @@ pipeBrowser = gLazy()
 .pipe(gUmd,{
     templateName: 'amdWeb',
     exports: (file) ->
-      'ExJsonSchema'
+      'Engine'
     namespace: (file) ->
       'exJsonSchema'
   })
@@ -51,7 +51,7 @@ pipeUmd = gLazy()
 .pipe(gUmd,{
     templateName: 'amdNodeWeb',
     exports: (file) ->
-      'ExJsonSchema'
+      'Engine'
     namespace: (file) ->
       'exJsonSchema'
   })
@@ -81,8 +81,13 @@ gulpBuild = () ->
   .src([
       'src/error/error.coffee'
       'src/context/context.coffee'
+      'src/context/normalize-context.coffee'
       'src/engine/engine.coffee'
-      'src/engine/core/*.coffee'
+      'src/engine/message.coffee'
+      'src/engine/assert.coffee'
+      'src/engine/normalize.coffee'
+      'src/engine/json-schema-core/*.coffee'
+      'src/engine/json-schema-validation/*.coffee'
     ])
   .pipe(gConcat('ex-json-schema.coffee', {newLine: '\r\n'}))
   .pipe(gCoffeeLint())

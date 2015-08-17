@@ -5,13 +5,15 @@ class Context
 
     @messages = []
 
-  _error = (message, info) ->
+  _error: (message, info, innerErrors) ->
     new SchemaError(
       message,
-      info
+      @,
+      info,
+      innerErrors
     )
 
-  msg: (level, message, info) ->
+  msg: (level, message, info, innerErrors) ->
     error = @_error(message, info)
     @messages.push({
       level: level
@@ -19,14 +21,14 @@ class Context
     })
     return error
 
-  msgError: (message, info) ->
-    @msg('error', message, info)
+  msgError: (message, info, innerErrors) ->
+    @msg('error', message, info, innerErrors)
 
-  msgWarning: (message, info) ->
-    @msg('warning', message, info)
+  msgWarning: (message, info, innerErrors) ->
+    @msg('warning', message, info, innerErrors)
 
-  msgInformation: (message, info) ->
-    @msg('information', message, info)
+  msgInformation: (message, info, innerErrors) ->
+    @msg('information', message, info, innerErrors)
 
   @pathEscapeSegment: (segment) ->
     segment.toString().replace(/~/g, '~0').replace(/\//g, '~1')
@@ -41,18 +43,18 @@ class Context
     result = []
     context = @
     while context?
-      result.unshift.apply(result, context)
+      result.unshift.apply(result, context.path)
       context = context.parent
 
     return result
 
   pathLocalString: () ->
     cls = @constructor
-    return '/' + @pathLocal().map(cls.pathEscapeSegment).join('/')
+    return @pathLocal().map(cls.pathEscapeSegment).join('/')
 
   pathGlobalString: () ->
     cls = @constructor
-    return '/' + @pathGlobal().map(cls.pathEscapeSegment).join('/')
+    return @pathGlobal().map(cls.pathEscapeSegment).join('/')
 
   newChildContext: (path) ->
     new @constructor(path, @)

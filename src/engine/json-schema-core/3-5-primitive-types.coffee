@@ -1,34 +1,34 @@
 ##
 # Return true if value is an array type
-Engine.is_array = (value) ->
+Engine.isArray = (value) ->
   Array.isArray(value)
 
 ##
 # Return true if value is a boolean type
-Engine.is_boolean = (value) ->
+Engine.isBoolean = (value) ->
   typeof value == 'boolean'
 
 ##
 # Return true if value is an integer type
-Engine.is_integer = (value) ->
+Engine.isInteger = (value) ->
   typeof value == 'number' and (value | 0) == value
 
 ##
 # Return true if value is a number type
-Engine.is_number = (value) ->
+Engine.isNumber = (value) ->
   typeof value == 'number'
 
 ##
 # Return true if value is null
-Engine.is_null = (value) ->
+Engine.isNull = (value) ->
   value is null
 
 ##
 # Return true if value is an object type
-Engine.is_object = (value) ->
+Engine.isObject = (value) ->
   typeof value == 'object' and value != null and not Array.isArray(value)
 
 ##
 # Return true if value is a string type
-Engine.is_string = (value) ->
+Engine.isString = (value) ->
   typeof value == 'string'
