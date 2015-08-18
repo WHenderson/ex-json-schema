@@ -41,8 +41,48 @@ suite('context', () ->
   )
 
   suite('messages', () ->
+
+    msgText = "test message"
+    msgInfo = { data: "test data" }
+    msgInnerErrors = []
+
     test('error', () ->
       context = new exJsonSchema.Context()
+      context.msgError(msgText, msgInfo, msgInnerErrors)
+
+      assert.equal(context.messages.length, 1, 'message not saved')
+
+      msg = context.messages[0]
+      assert.equal(msg.level, 'error', 'incorrect error level')
+      assert.equal(msg.error.message, msgText, 'incorrect message')
+      assert.equal(msg.error.info, msgInfo, 'incorrect info')
+      assert.equal(msg.error.innerErrors, msgInnerErrors, 'incorrect inner errors')
+    )
+
+    test('warning', () ->
+      context = new exJsonSchema.Context()
+      context.msgWarning(msgText, msgInfo, msgInnerErrors)
+
+      assert.equal(context.messages.length, 1, 'message not saved')
+
+      msg = context.messages[0]
+      assert.equal(msg.level, 'warning', 'incorrect error level')
+      assert.equal(msg.error.message, msgText, 'incorrect message')
+      assert.equal(msg.error.info, msgInfo, 'incorrect info')
+      assert.equal(msg.error.innerErrors, msgInnerErrors, 'incorrect inner errors')
+    )
+
+    test('information', () ->
+      context = new exJsonSchema.Context()
+      context.msgInformation(msgText, msgInfo, msgInnerErrors)
+
+      assert.equal(context.messages.length, 1, 'message not saved')
+
+      msg = context.messages[0]
+      assert.equal(msg.level, 'information', 'incorrect error level')
+      assert.equal(msg.error.message, msgText, 'incorrect message')
+      assert.equal(msg.error.info, msgInfo, 'incorrect info')
+      assert.equal(msg.error.innerErrors, msgInnerErrors, 'incorrect inner errors')
     )
   )
 
