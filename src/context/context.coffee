@@ -5,7 +5,7 @@ class Context
 
     @messages = []
 
-  _error: (message, info, innerErrors) ->
+  _error: (message, info = {}, innerErrors = []) ->
     new SchemaError(
       message,
       @,
@@ -14,7 +14,7 @@ class Context
     )
 
   msg: (level, message, info, innerErrors) ->
-    error = @_error(message, info)
+    error = @_error(message, info, innerErrors)
     @messages.push({
       level: level
       error: error
