@@ -63,6 +63,18 @@ suite('5.1.1 multipleOf', () ->
       ]
     )
   )
+  test('5.1.1.1. Ignore', () ->
+    testNormalize(
+      {
+        multipleOf: undefined
+      },
+      {}
+    )
+    testNormalize(
+      {},
+      {}
+    )
+  )
   test('5.1.1.1. Valid', () ->
     testNormalize({
       multipleOf: 1
