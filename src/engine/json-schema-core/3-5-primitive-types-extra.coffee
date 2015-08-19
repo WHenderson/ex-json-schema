@@ -44,4 +44,4 @@ Engine.isJson = (value) ->
         return false
     return true
 
-  return true
+  return false
