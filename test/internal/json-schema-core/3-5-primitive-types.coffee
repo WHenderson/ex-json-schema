@@ -1,4 +1,5 @@
 assert = require('chai').assert
+testDatas = require('./test-datas.coffee')
 
 suite('3-5-primitive-types', () ->
   exJsonSchema = null
@@ -7,54 +8,31 @@ suite('3-5-primitive-types', () ->
     exJsonSchema = require('../../../dist/ex-json-schema.coffee')
   )
 
+  simpleJson = testDatas.simpleJson()
+  simpleNonJson = testDatas.simpleNonJson()
+  allValues = []
 
-  validTestData = {
-    isArray: [
-      []
-    ],
-    isBoolean: [
-      true,
-      false
-    ],
-    isInteger: [
-      0,
-      1
-    ],
-    isNumber: [
-      0,
-      1,
-      0.1
-    ],
-    isNull: [
-      null
-    ],
-    isObject: [
-      {}
-    ],
-    isString: [
-      'string',
-      String('string')
-    ]
-  }
+  for own key, values of simpleJson
+    allValues = allValues.concat(values)
+  for own key, values of simpleNonJson
+    allValues = allValues.concat(values)
 
-  # Compile list of all test datas
-  completeTestDatas = [
-    undefined,
-    () -> undefined
-  ]
-  for own funcName, testDatas of validTestData
-    completeTestDatas = completeTestDatas.concat(testDatas)
+  for own typeName, validValues of simpleJson
+    do (typeName, validValues) ->
+      funcName = 'is' + typeName.slice(0,1).toUpperCase() + typeName.slice(1)
 
-  for own funcName, validDatas of validTestData
-    do (funcName, validDatas) ->
+      invalidValues = allValues.filter(
+        (value) ->
+          validValues.indexOf(value) == -1
+      )
+
       test(funcName, () ->
-        invalidTestDatas = [].concat(completeTestDatas)
+        func = exJsonSchema[funcName].bind(exJsonSchema)
 
-        for validData in validDatas
-          assert(exJsonSchema[funcName](validData), "#{funcName} failed to detect type")
+        for value in validValues
+          assert(func(value), "#{funcName} failed to detect #{typeName} for value #{value}")
 
-          invalidTestDatas = invalidTestDatas.filter((element) -> element != validData)
-
-        for invalidData in invalidTestDatas
-          assert(exJsonSchema[funcName](validData), "#{funcName} erroneously detected type")
-      ))
+        for value in invalidValues
+          assert(not func(value), "#{funcName} erroneously detected #{typeName} for value #{value}")
+      )
+)
