@@ -1,5 +1,6 @@
-Engine::_messageCompile = (message, info, context) ->
-  if typeof message == 'function'
-    message = message.call(@, info, context)
+Engine::_messageCompile = (message, partialSchema, context) ->
+
+  if typeof message == 'object' and message?.methodName?
+    message = @[message.methodName](message, partialSchema, context)
 
   return message

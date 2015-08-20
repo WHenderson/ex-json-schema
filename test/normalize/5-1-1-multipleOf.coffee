@@ -41,7 +41,7 @@ suite('5.1.1 multipleOf', () ->
             "multipleOf": "incorrect"
           }
           "level": "error"
-          "message": "The value of \"multipleOf\" MUST be a JSON number."
+          "message": "The value of \"multipleOf\" MUST be a JSON number"
         }
       ]
     )
@@ -58,7 +58,7 @@ suite('5.1.1 multipleOf', () ->
             "multipleOf": 0
           }
           "level": "error"
-          "message": "The value of \"multipleOf\" MUST be strictly greater than 0."
+          "message": "The value of \"multipleOf\" MUST be strictly greater than 0"
         }
       ]
     )

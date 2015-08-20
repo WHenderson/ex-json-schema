@@ -16,16 +16,23 @@ Engine::normalize = (schema) ->
 # @param {Context} context of normalization
 # @param {Object} schema is a valid json schema
 # @param {String|Number} path from context to the specified sub-schema
-# @param {String|Method} errorMessage if the child fails normalization
+# @param {String|Method|Object} errorMessage if the child fails normalization
 # @param {Object} errorInfo which may contain relevant information for generation of an errorMessage
 # @returns {Object} normalized json schema
-Engine::_normalizeChild = (context, schema, path, errorMessage, errorInfo) ->
+Engine::_normalizeChild = (context, schema, path, errorMessage, partialSchema) ->
   childContext = context.newChildContext(schema, path)
 
   @_normalizeApply(childContext)
 
   if childContext.errors.length != 0
-    context.msgError(@_messageCompile(errorMessage, errorInfo, context), errorInfo, childContext.errors)
+    messageText = @_messageCompile(errorMessage, partialSchema, context)
+    info = {
+      partialSchema: partialSchema
+    }
+    if typeof errorMessage == 'object'
+      info.errorId = errorMessage
+
+    context.msgError(messageText, info, childContext.errors)
 
   return childContext
 
