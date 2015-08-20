@@ -1,5 +1,6 @@
 ##
 # Returns true if lhs and rhs are equal according to json_schema_core#3.6
+# Note that this only works for json values. Results are undefined for non-json data
 Engine.isJsonEqual = (lhs, rhs) ->
   if @isNull(lhs) and @isNull(rhs)
     return true
@@ -39,4 +40,6 @@ Engine.isJsonEqual = (lhs, rhs) ->
       if not @isJsonEqual(lhs[key], rhs[key])
         return false
 
-    return false
+    return true
+
+  return false
