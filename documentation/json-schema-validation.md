@@ -26,77 +26,153 @@ This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relatin
 
 ### Table of Contents
 
-- [1.  Introduction](#1.  Introduction)
-- [2.  Conventions and Terminology](#2.  Conventions and Terminology)
-- [3.  Interoperability considerations](#3.  Interoperability considerations)
-- [3.1.  Validation of string instances](#3.1.  Validation of string instances)
-- [3.2.  Validation of numeric instances](#3.2.  Validation of numeric instances)
-- [3.3.  Regular expressions](#3.3.  Regular expressions)
-- [4.  General validation considerations](#4.  General validation considerations)
-- [4.1.  Keywords and instance primitive types](#4.1.  Keywords and instance primitive types)
-- [4.2.  Inter-dependent keywords](#4.2.  Inter-dependent keywords)
-- [4.3.  Default values for missing keywords](#4.3.  Default values for missing keywords)
-- [4.4.  Validation of container instances](#4.4.  Validation of container instances)
-- [5.  Validation keywords sorted by instance types](#5.  Validation keywords sorted by instance types)
-- [5.1.  Validation keywords for numeric instances (number and integer)](#5.1.  Validation keywords for numeric instances (number and integer))
-- [5.1.1.  multipleOf](#5.1.1.  multipleOf)
-- [5.1.2.  maximum and exclusiveMaximum](#5.1.2.  maximum and exclusiveMaximum)
-- [5.1.3.  minimum and exclusiveMinimum](#5.1.3.  minimum and exclusiveMinimum)
-- [5.2.  Validation keywords for strings](#5.2.  Validation keywords for strings)
-- [5.2.1.  maxLength](#5.2.1.  maxLength)
-- [5.2.2.  minLength](#5.2.2.  minLength)
-- [5.2.3.  pattern](#5.2.3.  pattern)
-- [5.3.  Validation keywords for arrays](#5.3.  Validation keywords for arrays)
-- [5.3.1.  additionalItems and items](#5.3.1.  additionalItems and items)
-- [5.3.2.  maxItems](#5.3.2.  maxItems)
-- [5.3.3.  minItems](#5.3.3.  minItems)
-- [5.3.4.  uniqueItems](#5.3.4.  uniqueItems)
-- [5.4.  Validation keywords for objects](#5.4.  Validation keywords for objects)
-- [5.4.1.  maxProperties](#5.4.1.  maxProperties)
-- [5.4.2.  minProperties](#5.4.2.  minProperties)
-- [5.4.3.  required](#5.4.3.  required)
-- [5.4.4.  additionalProperties, properties and patternProperties](#5.4.4.  additionalProperties, properties and patternProperties)
-- [5.4.5.  dependencies](#5.4.5.  dependencies)
-- [5.5.  Validation keywords for any instance type](#5.5.  Validation keywords for any instance type)
-- [5.5.1.  enum](#5.5.1.  enum)
-- [5.5.2.  type](#5.5.2.  type)
-- [5.5.3.  allOf](#5.5.3.  allOf)
-- [5.5.4.  anyOf](#5.5.4.  anyOf)
-- [5.5.5.  oneOf](#5.5.5.  oneOf)
-- [5.5.6.  not](#5.5.6.  not)
-- [5.5.7.  definitions](#5.5.7.  definitions)
-- [6.  Metadata keywords](#6.  Metadata keywords)
-- [6.1.  `title` and `description`](#6.1.  `title` and `description`)
-- [6.1.1.  Valid values](#6.1.1.  Valid values)
-- [6.1.2.  Purpose](#6.1.2.  Purpose)
-- [6.2.  `default`](#6.2.  `default`)
-- [6.2.1.  Valid values](#6.2.1.  Valid values)
-- [6.2.2.  Purpose](#6.2.2.  Purpose)
-- [7.  Semantic validation with `format`](#7.  Semantic validation with `format`)
-- [7.1.  Foreword](#7.1.  Foreword)
-- [7.2.  Implementation requirements](#7.2.  Implementation requirements)
-- [7.3.  Defined attributes](#7.3.  Defined attributes)
-- [7.3.1.  date-time](#7.3.1.  date-time)
-- [7.3.2.  email](#7.3.2.  email)
-- [7.3.3.  hostname](#7.3.3.  hostname)
-- [7.3.4.  ipv4](#7.3.4.  ipv4)
-- [7.3.5.  ipv6](#7.3.5.  ipv6)
-- [7.3.6.  uri](#7.3.6.  uri)
-- [8.  Reference algorithms for calculating children schemas](#8.  Reference algorithms for calculating children schemas)
-- [8.1.  Foreword](#8.1.  Foreword)
-- [8.2.  Array elements](#8.2.  Array elements)
-- [8.2.1.  Defining characteristic](#8.2.1.  Defining characteristic)
-- [8.2.2.  Implied keywords and default values.](#8.2.2.  Implied keywords and default values.)
-- [8.2.3.  Calculation](#8.2.3.  Calculation)
-- [8.3.  Object members](#8.3.  Object members)
-- [8.3.1.  Defining characteristic](#8.3.1.  Defining characteristic)
-- [8.3.2.  Implied keywords](#8.3.2.  Implied keywords)
-- [8.3.3.  Calculation](#8.3.3.  Calculation)
-- [9.  IANA Considerations](#9.  IANA Considerations)
-- [10.  References](#10.  References)
-- [10.1.  Normative References](#10.1.  Normative References)
-- [10.2.  Informative References](#10.2.  Informative References)
-- [Appendix A.  ChangeLog](#Appendix A.  ChangeLog)
+- [1.  Introduction](#1--introduction)
+- [2.  Conventions and Terminology](#2--conventions-and-terminology)
+- [3.  Interoperability considerations](#3--interoperability-considerations)
+- [3.1.  Validation of string instances](#31--validation-of-string-instances)
+- [3.2.  Validation of numeric instances](#32--validation-of-numeric-instances)
+- [3.3.  Regular expressions](#33--regular-expressions)
+- [4.  General validation considerations](#4--general-validation-considerations)
+- [4.1.  Keywords and instance primitive types](#41--keywords-and-instance-primitive-types)
+- [4.2.  Inter-dependent keywords](#42--inter-dependent-keywords)
+- [4.3.  Default values for missing keywords](#43--default-values-for-missing-keywords)
+- [4.4.  Validation of container instances](#44--validation-of-container-instances)
+- [5.  Validation keywords sorted by instance types](#5--validation-keywords-sorted-by-instance-types)
+- [5.1.  Validation keywords for numeric instances (number and integer)](#51--validation-keywords-for-numeric-instances-number-and-integer)
+- [5.1.1.  `multipleOf`](#511--multipleof)
+- [5.1.1.1.  Valid values](#5111--valid-values)
+- [5.1.1.2.  Conditions for successful validation](#5112--conditions-for-successful-validation)
+- [5.1.2.  `maximum` and `exclusiveMaximum`](#512--maximum-and-exclusivemaximum)
+- [5.1.2.1.  Valid values](#5121--valid-values)
+- [5.1.2.2.  Conditions for successful validation](#5122--conditions-for-successful-validation)
+- [5.1.2.3.  Default value](#5123--default-value)
+- [5.1.3.  `minimum` and `exclusiveMinimum`](#513--minimum-and-exclusiveminimum)
+- [5.1.3.1.  Valid values](#5131--valid-values)
+- [5.1.3.2.  Conditions for successful validation](#5132--conditions-for-successful-validation)
+- [5.1.3.3.  Default value](#5133--default-value)
+- [5.2.  Validation keywords for strings](#52--validation-keywords-for-strings)
+- [5.2.1.  `maxLength`](#521--maxlength)
+- [5.2.1.1.  Valid values](#5211--valid-values)
+- [5.2.1.2.  Conditions for successful validation](#5212--conditions-for-successful-validation)
+- [5.2.2.  `minLength`](#522--minlength)
+- [5.2.2.1.  Valid values](#5221--valid-values)
+- [5.2.2.2.  Conditions for successful validation](#5222--conditions-for-successful-validation)
+- [5.2.2.3.  Default value](#5223--default-value)
+- [5.2.3.  `pattern`](#523--pattern)
+- [5.2.3.1.  Valid values](#5231--valid-values)
+- [5.2.3.2.  Conditions for successful validation](#5232--conditions-for-successful-validation)
+- [5.3.  Validation keywords for arrays](#53--validation-keywords-for-arrays)
+- [5.3.1.  `additionalItems` and `items`](#531--additionalitems-and-items)
+- [5.3.1.1.  Valid values](#5311--valid-values)
+- [5.3.1.2.  Conditions for successful validation](#5312--conditions-for-successful-validation)
+- [5.3.1.3.  Example](#5313--example)
+- [5.3.1.4.  Default values](#5314--default-values)
+- [5.3.2.  `maxItems`](#532--maxitems)
+- [5.3.2.1.  Valid values](#5321--valid-values)
+- [5.3.2.2.  Conditions for successful validation](#5322--conditions-for-successful-validation)
+- [5.3.3.  `minItems`](#533--minitems)
+- [5.3.3.1.  Valid values](#5331--valid-values)
+- [5.3.3.2.  Conditions for successful validation](#5332--conditions-for-successful-validation)
+- [5.3.3.3.  Default value](#5333--default-value)
+- [5.3.4.  `uniqueItems`](#534--uniqueitems)
+- [5.3.4.1.  Valid values](#5341--valid-values)
+- [5.3.4.2.  Conditions for successful validation](#5342--conditions-for-successful-validation)
+- [5.3.4.3.  Default value](#5343--default-value)
+- [5.4.  Validation keywords for objects](#54--validation-keywords-for-objects)
+- [5.4.1.  `maxProperties`](#541--maxproperties)
+- [5.4.1.1.  Valid values](#5411--valid-values)
+- [5.4.1.2.  Conditions for successful validation](#5412--conditions-for-successful-validation)
+- [5.4.2.  `minProperties`](#542--minproperties)
+- [5.4.2.1.  Valid values](#5421--valid-values)
+- [5.4.2.2.  Conditions for successful validation](#5422--conditions-for-successful-validation)
+- [5.4.2.3.  Default value](#5423--default-value)
+- [5.4.3.  `required`](#543--required)
+- [5.4.3.1.  Valid values](#5431--valid-values)
+- [5.4.3.2.  Conditions for successful validation](#5432--conditions-for-successful-validation)
+- [5.4.4.  `additionalProperties`, `properties` and `patternProperties`](#544--additionalproperties-properties-and-patternproperties)
+- [5.4.4.1.  Valid values](#5441--valid-values)
+- [5.4.4.2.  Conditions for successful validation](#5442--conditions-for-successful-validation)
+- [5.4.4.3.  Default values](#5443--default-values)
+- [5.4.4.4.  If `additionalProperties` has boolean value false](#5444--if-additionalproperties-has-boolean-value-false)
+- [5.4.4.5.  Example](#5445--example)
+- [5.4.5.  `dependencies`](#545--dependencies)
+- [5.4.5.1.  Valid values](#5451--valid-values)
+- [5.4.5.2.  Conditions for successful validation](#5452--conditions-for-successful-validation)
+- [5.4.5.2.1.  Schema dependencies](#54521--schema-dependencies)
+- [5.4.5.2.2.  Property dependencies](#54522--property-dependencies)
+- [5.5.  Validation keywords for any instance type](#55--validation-keywords-for-any-instance-type)
+- [5.5.1.  `enum`](#551--enum)
+- [5.5.1.1.  Valid values](#5511--valid-values)
+- [5.5.1.2.  Conditions for successful validation](#5512--conditions-for-successful-validation)
+- [5.5.2.  `type`](#552--type)
+- [5.5.2.1.  Valid values](#5521--valid-values)
+- [5.5.2.2.  Conditions for successful validation](#5522--conditions-for-successful-validation)
+- [5.5.3.  `allOf`](#553--allof)
+- [5.5.3.1.  Valid values](#5531--valid-values)
+- [5.5.3.2.  Conditions for successful validation](#5532--conditions-for-successful-validation)
+- [5.5.4.  `anyOf`](#554--anyof)
+- [5.5.4.1.  Valid values](#5541--valid-values)
+- [5.5.4.2.  Conditions for successful validation](#5542--conditions-for-successful-validation)
+- [5.5.5.  `oneOf`](#555--oneof)
+- [5.5.5.1.  Valid values](#5551--valid-values)
+- [5.5.5.2.  Conditions for successful validation](#5552--conditions-for-successful-validation)
+- [5.5.6.  `not`](#556--not)
+- [5.5.6.1.  Valid values](#5561--valid-values)
+- [5.5.6.2.  Conditions for successful validation](#5562--conditions-for-successful-validation)
+- [5.5.7.  `definitions`](#557--definitions)
+- [5.5.7.1.  Valid values](#5571--valid-values)
+- [5.5.7.2.  Conditions for successful validation](#5572--conditions-for-successful-validation)
+- [6.  Metadata keywords](#6--metadata-keywords)
+- [6.1.  `title` and `description`](#61--title-and-description)
+- [6.1.1.  Valid values](#611--valid-values)
+- [6.1.2.  Purpose](#612--purpose)
+- [6.2.  `default`](#62--default)
+- [6.2.1.  Valid values](#621--valid-values)
+- [6.2.2.  Purpose](#622--purpose)
+- [7.  Semantic validation with `format`](#7--semantic-validation-with-format)
+- [7.1.  Foreword](#71--foreword)
+- [7.2.  Implementation requirements](#72--implementation-requirements)
+- [7.3.  Defined attributes](#73--defined-attributes)
+- [7.3.1.  `"date-time"`](#731--date-time)
+- [7.3.1.1.  Applicability](#7311--applicability)
+- [7.3.1.2.  Validation](#7312--validation)
+- [7.3.2.  `"email"`](#732--email)
+- [7.3.2.1.  Applicability](#7321--applicability)
+- [7.3.2.2.  Validation](#7322--validation)
+- [7.3.3.  `"hostname"`](#733--hostname)
+- [7.3.3.1.  Applicability](#7331--applicability)
+- [7.3.3.2.  Validation](#7332--validation)
+- [7.3.4.  `"ipv4"`](#734--ipv4)
+- [7.3.4.1.  Applicability](#7341--applicability)
+- [7.3.4.2.  Validation](#7342--validation)
+- [7.3.5.  `"ipv6"`](#735--ipv6)
+- [7.3.5.1.  Applicability](#7351--applicability)
+- [7.3.5.2.  Validation](#7352--validation)
+- [7.3.6.  `"uri"`](#736--uri)
+- [7.3.6.1.  Applicability](#7361--applicability)
+- [7.3.6.2.  Validation](#7362--validation)
+- [8.  Reference algorithms for calculating children schemas](#8--reference-algorithms-for-calculating-children-schemas)
+- [8.1.  Foreword](#81--foreword)
+- [8.2.  Array elements](#82--array-elements)
+- [8.2.1.  Defining characteristic](#821--defining-characteristic)
+- [8.2.2.  Implied keywords and default values.](#822--implied-keywords-and-default-values)
+- [8.2.3.  Calculation](#823--calculation)
+- [8.2.3.1.  If `items` is a schema](#8231--if-items-is-a-schema)
+- [8.2.3.2.  If `items` is an array](#8232--if-items-is-an-array)
+- [8.3.  Object members](#83--object-members)
+- [8.3.1.  Defining characteristic](#831--defining-characteristic)
+- [8.3.2.  Implied keywords](#832--implied-keywords)
+- [8.3.3.  Calculation](#833--calculation)
+- [8.3.3.1.  Names used in this calculation](#8331--names-used-in-this-calculation)
+- [8.3.3.2.  First step: schemas in `properties`](#8332--first-step-schemas-in-properties)
+- [8.3.3.3.  Second step: schemas in `patternProperties`](#8333--second-step-schemas-in-patternproperties)
+- [8.3.3.4.  Third step: `additionalProperties`](#8334--third-step-additionalproperties)
+- [9.  IANA Considerations](#9--iana-considerations)
+- [10.  References](#10--references)
+- [10.1. Normative References](#101-normative-references)
+- [10.2. Informative References](#102-informative-references)
+- [Appendix A.  ChangeLog](#appendix-a--changelog)
+- [Authors' Addresses](#authors-addresses)
 
 * * *
 
@@ -511,8 +587,8 @@ If this keyword is not present, it may be considered present with a value of 0.
 
 
 - e) The value of `patternProperties` MUST be an object
-- d) Each property name of this object SHOULD be a valid regular expression, according to the [ECMA 262](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf) regular expression dialect
-- e) Each property value of this object MUST be an object, and each object MUST be a valid JSON Schema
+- f) Each property name of this object SHOULD be a valid regular expression, according to the [ECMA 262](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf) regular expression dialect
+- g) Each property value of this object MUST be an object, and each object MUST be a valid JSON Schema
 
 * * *
 
@@ -610,14 +686,14 @@ The set `s` still contains two elements, `""` and `"fiddle"`. Validation therefo
 - b) Each value of this object MUST be either an object or an array
 
 
-- c) If the value is an object, it MUST be a valid JSON Schema
-- d) This is called a schema dependency
+- c) If the value is an object, it MUST be a valid JSON Schema.
+- This is called a schema dependency
 
 
-- e) If the value is an array, it MUST have at least one element
-- f) Each element MUST be a string,
-- g) and elements in the array MUST be unique
-- h) This is called a property dependency
+- d) If the value is an array, it MUST have at least one element
+- e) Each element MUST be a string,
+- f) and elements in the array MUST be unique.
+- This is called a property dependency
 
 * * *
 
@@ -671,10 +747,11 @@ Note that this is the instance itself which must validate successfully, not the 
 ### 5.5.2.1.  Valid values
 
 - a) The value of this keyword MUST be either a string or an array
-- b) If it is an array, elements of the array MUST be strings and MUST be unique
+- b) If it is an array, elements of the array MUST be strings
+- c) If it is an array, elements of the array MUST be unique
 
 
-- c) String values MUST be one of the seven primitive types defined by the core specification.
+- d) String values MUST be one of the seven primitive types defined by the core specification.
 
 * * *
 
@@ -801,7 +878,8 @@ As an example, here is a schema describing an array of positive integers, where 
 
 ### 6.1.1.  Valid values
 
-- a) The value of both of these keywords MUST be a string.
+- a) The value of `title` MUST be a string.
+- b) The value of `description` MUST be a string.
 
 * * *
 

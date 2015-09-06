@@ -1,15 +1,15 @@
 assert = require('chai').assert
-testDatas = require('./test-datas.coffee')
+jsonDatas = require('../../util/json-datas.coffee')
 
-suite('3-5-primitive-types', () ->
+suite('3.5. primitive-types', () ->
   exJsonSchema = null
 
   setup(() ->
     exJsonSchema = require('../../../dist/ex-json-schema.coffee')
   )
 
-  simpleJson = testDatas.simpleJson()
-  simpleNonJson = testDatas.simpleNonJson()
+  simpleJson = jsonDatas.simpleJson()
+  simpleNonJson = jsonDatas.simpleNonJson()
   allValues = []
 
   for own key, values of simpleJson

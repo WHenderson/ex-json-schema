@@ -1,83 +1,65 @@
 assert = require('chai').assert
+testNormalize = require('../util/test-normalize.coffee')
 
 suite('5.1.1 multipleOf', () ->
-  exJsonSchema = null
 
-  setup(() ->
-    exJsonSchema = require('../../dist/ex-json-schema.coffee')
-  )
-
-  testNormalize = (
-    inSchema,
-    outSchema,
-    outMessages=[]
-  ) ->
-    outSchema ?= inSchema
-    engine = new exJsonSchema()
-    context = engine.normalize(inSchema)
-    assert.deepEqual(context.nodeOut, outSchema, 'failed to normalize schema correctly')
-    if outMessages.length == 0
-      assert(context.messages.length == 0, 'expected silent operation')
-    else
-      messages = context.messages.map((message) ->
-        {
-          level: message.level
-          message: message.error.message
-          info: message.error.info
-        }
-      )
-      assert.deepEqual(messages, outMessages, 'incorrect message output')
-    return context
-
-  test('5.1.1.1. The value of "multipleOf" MUST be a JSON number', () ->
-    testNormalize(
+  testNormalize(
+    '5.1.1.1.a',
+    {
+      multipleOf: 'incorrect'
+    },
+    {},
+    [
       {
-        multipleOf: 'incorrect'
-      },
-      {},
-      [
-        {
-          "info": {
+        "info": {
+          "errorId": {
+            "group": "json-schema-validation"
+            "section": "5.1.1.1.a"
+          }
+          "partialSchema": {
             "multipleOf": "incorrect"
           }
-          "level": "error"
-          "message": "The value of \"multipleOf\" MUST be a JSON number"
         }
-      ]
-    )
+        "level": "error"
+        "message": "The value of \"multipleOf\" MUST be a JSON number"
+      }
+    ]
   )
-  test('5.1.1.1. The value of "multipleOf" MUST be strictly greater than 0', () ->
-    testNormalize(
+
+  testNormalize(
+    '5.1.1.1.b',
+    {
+      multipleOf: 0
+    },
+    {},
+    [
       {
-        multipleOf: 0
-      },
-      {},
-      [
-        {
-          "info": {
+        "info": {
+          "errorId": {
+            "group": "json-schema-validation"
+            "section": "5.1.1.1.b"
+          }
+          "partialSchema": {
             "multipleOf": 0
           }
-          "level": "error"
-          "message": "The value of \"multipleOf\" MUST be strictly greater than 0"
         }
-      ]
-    )
+        "level": "error"
+        "message": "The value of \"multipleOf\" MUST be strictly greater than 0"
+      }
+    ]
   )
-  test('5.1.1.1. Ignore', () ->
-    testNormalize(
-      {
-        multipleOf: undefined
-      },
-      {}
-    )
-    testNormalize(
-      {},
-      {}
-    )
+
+  testNormalize(
+    '5.1.1.1. Ignore empty',
+    {},
+    {},
+    []
   )
-  test('5.1.1.1. Valid', () ->
-    testNormalize({
+
+  testNormalize(
+    '5.1.1.1. Valid'
+    {
       multipleOf: 1
-    })
+    }
   )
 )

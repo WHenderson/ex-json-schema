@@ -10,8 +10,8 @@ class NormalizeContext extends Context
   newChildContext: (node, path) ->
     new @constructor(node, path, @)
 
-  msg: (level, message, info) ->
-    error = super(level, message, info)
+  msg: (level, message, info, innerErrors) ->
+    error = super(level, message, info, innerErrors)
     if level == 'error'
       @errors.push(error)
 

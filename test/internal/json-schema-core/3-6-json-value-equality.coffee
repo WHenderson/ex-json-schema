@@ -1,16 +1,16 @@
 assert = require('chai').assert
-testDatas = require('./test-datas.coffee')
+jsonDatas = require('../../util/json-datas.coffee')
 util = require('util')
 
-suite('3-6-json-value-equality', () ->
+suite('3.6. json-value-equality', () ->
   exJsonSchema = null
 
   setup(() ->
     exJsonSchema = require('../../../dist/ex-json-schema.coffee')
   )
 
-  simpleJson = testDatas.simpleJson()
-  complexJson = testDatas.complexJson()
+  simpleJson = jsonDatas.simpleJson()
+  complexJson = jsonDatas.complexJson()
 
   allValues = []
 
@@ -19,9 +19,9 @@ suite('3-6-json-value-equality', () ->
 
   allValues = allValues.concat(complexJson)
 
-  test('isJsonEqual', () ->
+  test('isJsonDeepEqual', () ->
     for lhs in allValues
       for rhs in allValues
-        assert.equal(exJsonSchema.isJsonEqual(lhs, rhs), JSON.stringify(lhs) == JSON.stringify(rhs), "incorrect identification between `#{util.inspect(lhs, { depth: null })}` and `#{util.inspect(rhs, { depth: null })}`")
+        assert.equal(exJsonSchema.isJsonDeepEqual(lhs, rhs), JSON.stringify(lhs) == JSON.stringify(rhs), "incorrect identification between `#{util.inspect(lhs, { depth: null })}` and `#{util.inspect(rhs, { depth: null })}`")
   )
 )

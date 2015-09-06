@@ -16,23 +16,11 @@ Engine::normalize = (schema) ->
 # @param {Context} context of normalization
 # @param {Object} schema is a valid json schema
 # @param {String|Number} path from context to the specified sub-schema
-# @param {String|Method|Object} errorMessage if the child fails normalization
-# @param {Object} errorInfo which may contain relevant information for generation of an errorMessage
 # @returns {Object} normalized json schema
-Engine::_normalizeChild = (context, schema, path, errorMessage, partialSchema) ->
+Engine::_normalizeChild = (context, schema, path) ->
   childContext = context.newChildContext(schema, path)
 
   @_normalizeApply(childContext)
-
-  if childContext.errors.length != 0
-    messageText = @_messageCompile(errorMessage, partialSchema, context)
-    info = {
-      partialSchema: partialSchema
-    }
-    if typeof errorMessage == 'object'
-      info.errorId = errorMessage
-
-    context.msgError(messageText, info, childContext.errors)
 
   return childContext
 
@@ -45,3 +33,16 @@ Engine::_normalizeApply = (context) ->
     if key.slice(0, 3) == '_n_' and typeof val == 'function'
       val.call(@, context)
   return
+
+##
+# Method to normalize a child schema whilst asserting that it has no errors
+# @param {Context} context of normalization
+# @param {Object} schema is a valid json schema
+# @param {String|Number} path from context to the specified sub-schema
+# @param {String|Method|Object} errorMessage if the child fails normalization
+# @param {Object} partialSchema which may contain relevant information for generation of an errorMessage
+# @returns {Object} resulting schema
+Engine::_normalizeAssert = (context, schema, path, errorMessage, partialSchema) ->
+  childContext = @_normalizeChild(context, schema, path)
+  @_eAssert(context, childContext.errors.length == 0, errorMessage, partialSchema, childContext.errors)
+  return childContext.nodeOut

@@ -1,3 +1,3 @@
 Engine = require('../index');
 
-Engine.isJson([void 0]);
+Engine.isJsonDeep([void 0]);

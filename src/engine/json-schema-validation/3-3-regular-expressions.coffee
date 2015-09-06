@@ -1,0 +1,2 @@
+Engine.assertPatternIsSimple = (pattern) ->
+  true
