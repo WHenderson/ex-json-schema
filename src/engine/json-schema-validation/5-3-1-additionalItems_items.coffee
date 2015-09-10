@@ -1,19 +1,19 @@
-Engine::_m_json_schema_validation__5_3_1_1_a = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_3_1_1_a = (id, info, nContext) ->
   'The value of "additionalItems" MUST be either a boolean or an object.'
 
-Engine::_m_json_schema_validation__5_3_1_1_b = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_3_1_1_b = (id, info, nContext) ->
   'If "additionalItems" is an object, it MUST be a valid JSON Schema.'
 
-Engine::_m_json_schema_validation__5_3_1_1_c = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_3_1_1_c = (id, info, nContext) ->
   'The value of "items" MUST be either an object or an array.'
 
-Engine::_m_json_schema_validation__5_3_1_1_d = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_3_1_1_d = (id, info, nContext) ->
   'If "items" is an object, this object MUST be a valid JSON Schema.'
 
-Engine::_m_json_schema_validation__5_3_1_1_e = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_3_1_1_e = (id, info, nContext) ->
   'If "items" is an array, items of this array MUST be objects, and each of these objects MUST be a valid JSON Schema.'
 
-Engine::_m_json_schema_validation__5_3_1_2_a = (id, partialSchema, vContext) ->
+Engine::_m_json_schema_validation__5_3_1_2_a = (id, info, vContext) ->
   'has additional items'
 
 Engine::_n_json_schema_validation__5_3_1_additionalItems_items = (nContext) ->
@@ -28,31 +28,35 @@ Engine::_n_json_schema_validation__5_3_1_additionalItems_items = (nContext) ->
   if ps.items == undefined and ps.additionalItems == undefined
     return
 
+  ei = {
+    partialSchema: ps
+  }
+
   if ps.additionalItems != undefined
-    if @_eAssert(nContext, cls.isBoolean(ps.additionalItems) or cls.isObject(ps.additionalItems), { group: 'json-schema-validation', section: '5.3.1.1.a' }, ps)
+    if @_eAssert(nContext, cls.isBoolean(ps.additionalItems) or cls.isObject(ps.additionalItems), { group: 'json-schema-validation', section: '5.3.1.1.a' }, ei)
       rs.additionalItems = {}
     else
       if cls.isObject(ps.additionalItems)
-        rs.additionalItems = @_normalizeAssert(nContext, ps.additionalItems, ['additionalItems'], { group: 'json-schema-validation', section: '5.3.1.1.b' }, ps)
+        rs.additionalItems = @_normalizeAssert(nContext, ps.additionalItems, ['additionalItems'], { group: 'json-schema-validation', section: '5.3.1.1.b' }, ei)
       else
         rs.additionalItems = if ps.additionalItems then {} else false
   else
     rs.additionalItems = {}
 
   if ps.items != undefined
-    if @_eAssert(nContext, cls.isObject(ps.items) or cls.isArray(ps.items), { group: 'json-schema-validation', section: '5.3.1.1.c' }, ps)
+    if @_eAssert(nContext, cls.isObject(ps.items) or cls.isArray(ps.items), { group: 'json-schema-validation', section: '5.3.1.1.c' }, ei)
       rs.items = {}
       rs.additionalItems = undefined
     else
       if cls.isObject(ps.items)
-        rs.items = @_normalizeAssert(nContext, ps.items, ['items'], { group: 'json-schema-validation', section: '5.3.1.1.d' }, ps)
+        rs.items = @_normalizeAssert(nContext, ps.items, ['items'], { group: 'json-schema-validation', section: '5.3.1.1.d' }, ei)
         rs.additionalItems = undefined
       else
         rs.items = ps.items.map(
           (item, iItem) =>
-            if @_eAssert(nContext, cls.isObject(item), { group: 'json-schema-validation', section: '5.3.1.1.e' }, ps)
+            if @_eAssert(nContext, cls.isObject(item), { group: 'json-schema-validation', section: '5.3.1.1.e' }, ei)
               return {}
-            return @_normalizeAssert(nContext, item, ['items', iItem], { group: 'json-schema-validation', section: '5.3.1.1.e' }, ps)
+            return @_normalizeAssert(nContext, item, ['items', iItem], { group: 'json-schema-validation', section: '5.3.1.1.e' }, ei)
         )
   else
     rs.items = {}
@@ -76,6 +80,11 @@ Engine::_c_json_schema_validation__5_3_1_additionalItems_items = (cContext) ->
 
   if ps.items == undefined and ps.additionalItems == undefined
     return
+
+  ei = {
+    partialSchema: ps
+    cContext: cContext
+  }
 
   v = {
   }
@@ -112,7 +121,7 @@ Engine::_c_json_schema_validation__5_3_1_additionalItems_items = (cContext) ->
             @_validateChild(vContext, vItem, vContext.value[iItem], [iItem])
 
         if v.additionalItems == false
-          @_eAssert(vContext, iItem == vContext.value.length, { group: 'json-schema-validation', section: '5.3.1.2.a' }, ps)
+          @_eAssert(vContext, iItem == vContext.value.length, { group: 'json-schema-validation', section: '5.3.1.2.a' }, ei)
         else if v.additionalItems?
           while iItem != vContext.value.length
             @_validateChild(vContext, v.additionalItems, vContext.value[iItem], [iItem])

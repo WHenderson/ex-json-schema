@@ -1,16 +1,16 @@
-Engine::_m_json_schema_validation__5_5_2_1_a = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_5_2_1_a = (id, info, nContext) ->
   'The value of "type" MUST be either a string or an array.'
 
-Engine::_m_json_schema_validation__5_5_2_1_b = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_5_2_1_b = (id, info, nContext) ->
   'If "type" is an array, elements of the array MUST be strings.'
 
-Engine::_m_json_schema_validation__5_5_2_1_c = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_5_2_1_c = (id, info, nContext) ->
   'If "type" is an array, elements of the array MUST be unique.'
 
-Engine::_m_json_schema_validation__5_5_2_1_d = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__5_5_2_1_d = (id, info, nContext) ->
   'The value(s) of "type" MUST be one of the seven primitive types defined by the core specification.'
 
-Engine::_m_json_schema_validation__5_5_2_2_a = (id, partialSchema, vContext) ->
+Engine::_m_json_schema_validation__5_5_2_2_a = (id, info, vContext) ->
   if partialSchema.type.length == 1
     l_type = partialSchema.type[0]
     if l_type.length != 0 and 'aeiou'.indexOf(l_type[0].toLowerCase()) != -1
@@ -31,28 +31,32 @@ Engine::_n_json_schema_validation__5_5_2_type = (nContext) ->
   if ps.type == undefined
     return
 
+  ei = {
+    partialSchema: ps
+  }
+
   rs = {
     type: ps.type
   }
 
-  if @_eAssert(nContext, cls.isString(rs.type) or cls.isArray(rs.type), { group: 'json-schema-validation', section: '5.5.2.1.a' }, ps)
+  if @_eAssert(nContext, cls.isString(rs.type) or cls.isArray(rs.type), { group: 'json-schema-validation', section: '5.5.2.1.a' }, ei)
     return
 
   if cls.isArray(rs.type)
     rs.type = do =>
       results = []
       for element in rs.type
-        if @_eAssert(nContext, cls.isString(element), { group: 'json-schema-validation', section: '5.5.2.1.b' }, ps)
+        if @_eAssert(nContext, cls.isString(element), { group: 'json-schema-validation', section: '5.5.2.1.b' }, ei)
           continue
-        if @_eAssert(nContext, ['array', 'boolean', 'integer', 'number', 'null', 'object', 'string'].indexOf(element) != -1, { group: 'json-schema-validation', section: '5.5.2.1.d' }, ps)
+        if @_eAssert(nContext, ['array', 'boolean', 'integer', 'number', 'null', 'object', 'string'].indexOf(element) != -1, { group: 'json-schema-validation', section: '5.5.2.1.d' }, ei)
           continue
         results.push(element)
       return results
 
-    if @_eAssert(nContext, cls.areJsonArrayElementsUnique(rs.type), { group: 'json-schema-validation', section: '5.5.2.1.c' }, ps)
+    if @_eAssert(nContext, cls.areJsonArrayElementsUnique(rs.type), { group: 'json-schema-validation', section: '5.5.2.1.c' }, ei)
       rs.type = cls.jsonArrayFilterDuplicates(rs.type)
   else
-    if @_eAssert(nContext, ['array', 'boolean', 'integer', 'number', 'null', 'object', 'string'].indexOf(rs.type) != -1, { group: 'json-schema-validation', section: '5.5.2.1.d' }, ps)
+    if @_eAssert(nContext, ['array', 'boolean', 'integer', 'number', 'null', 'object', 'string'].indexOf(rs.type) != -1, { group: 'json-schema-validation', section: '5.5.2.1.d' }, ei)
       return
 
     rs.type = [rs.type]
@@ -69,6 +73,11 @@ Engine::_c_json_schema_validation__5_5_2_type = (cContext) ->
 
   if ps.type == undefined
     return
+
+  ei = {
+    partialSchema: ps
+    cContext: cContext
+  }
 
   v = {
   }

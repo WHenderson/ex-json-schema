@@ -1,4 +1,4 @@
-Engine::_m_json_schema_validation__6_1_1_b = (id, partialSchema, nContext) ->
+Engine::_m_json_schema_validation__6_1_1_b = (id, info, nContext) ->
   'The value of "description" MUST be a string.'
 
 Engine::_n_json_schema_validation__6_1_description = (nContext) ->
@@ -10,7 +10,11 @@ Engine::_n_json_schema_validation__6_1_description = (nContext) ->
   if ps.description == undefined
     return
 
-  if @_eAssert(nContext, cls.isString(ps.description), { group: 'json-schema-validation', section: '6.1.1.b' }, ps)
+  ei = {
+    partialSchema: ps
+  }
+
+  if @_eAssert(nContext, cls.isString(ps.description), { group: 'json-schema-validation', section: '6.1.1.b' }, ei)
     return
 
   nContext.nodeOut.description = ps.description
