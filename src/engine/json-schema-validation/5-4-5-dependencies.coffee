@@ -17,7 +17,7 @@ Engine::_m_json_schema_validation__5_4_5_1_f = (id, info, nContext) ->
   'If the value in "dependencies" is an array, elements in the array MUST be unique.'
 
 Engine::_m_json_schema_validation__5_4_5_2_2_a = (id, info, vContext) ->
-  'is missing dependent members'
+  "is missing #{info.details.missing} as required by #{info.details.provided}"
 
 ##
 # 5.4.5.  dependencies
@@ -113,7 +113,19 @@ Engine::_c_json_schema_validation__5_4_5_dependencies = (cContext) ->
           dependency = v.dependencies[name]
           if cls.isArray(dependency)
             for dependent in dependency
-              @_eAssert(nContext, hasDependent(dependent), { group: 'json-schema-validation', section: '5.4.5.2.2.a' }, ei)
+              @_eAssert(
+                nContext,
+                hasDependent(dependent),
+                { group: 'json-schema-validation', section: '5.4.5.2.2.a' },
+                {
+                  partialSchema: ps
+                  details: {
+                    provided: name
+                    missing: dependent
+                  }
+                  cContext: cContext
+                }
+              )
           else
             @_validateChild(vContext, dependency, vContext.value, [])
 
