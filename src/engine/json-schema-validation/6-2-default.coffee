@@ -1,17 +1,17 @@
-Engine::_m_json_schema_validation__6_2_1_a = (id, partialSchema, context) ->
+Engine::_m_json_schema_validation__6_2_1_a = (id, partialSchema, nContext) ->
   'The value of "default" is not valid JSON data.'
 
-Engine::_n_json_schema_validation__6_2_default = (context) ->
-  if not {}.hasOwnProperty.call(context.nodeIn, 'default')
+Engine::_n_json_schema_validation__6_2_default = (nContext) ->
+  if not {}.hasOwnProperty.call(nContext.nodeIn, 'default')
     return
 
   cls = @constructor
   ps = {
-    default: context.nodeIn.default
+    default: nContext.nodeIn.default
   }
 
-  @_wAssert(context, cls.isJsonDeep(ps.default), { group: 'json-schema-validation', section: '6.2.1.a' }, ps)
+  @_wAssert(nContext, cls.isJsonDeep(ps.default), { group: 'json-schema-validation', section: '6.2.1.a' }, ps)
 
-  context.nodeOut.default = ps.default
+  nContext.nodeOut.default = ps.default
 
   return

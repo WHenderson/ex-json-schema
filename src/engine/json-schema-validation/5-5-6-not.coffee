@@ -1,13 +1,13 @@
-Engine::_m_json_schema_validation__5_5_6_1_a = (id, partialSchema, context) ->
+Engine::_m_json_schema_validation__5_5_6_1_a = (id, partialSchema, nContext) ->
   'The value of "not" MUST be an object.'
 
-Engine::_m_json_schema_validation__5_5_6_1_b = (id, partialSchema, context) ->
+Engine::_m_json_schema_validation__5_5_6_1_b = (id, partialSchema, nContext) ->
   'The value of "not" MUST be a valid JSON Schema.'
 
-Engine::_n_json_schema_validation__5_5_6_not = (context) ->
+Engine::_n_json_schema_validation__5_5_6_not = (nContext) ->
   cls = @constructor
   ps = {
-    not: context.nodeIn.not
+    not: nContext.nodeIn.not
   }
 
   if ps.not == undefined
@@ -17,11 +17,11 @@ Engine::_n_json_schema_validation__5_5_6_not = (context) ->
     not: ps.not
   }
 
-  if @_eAssert(context, cls.isObject(rs.not), { group: 'json-schema-validation', section: '5.5.6.1.a' }, ps)
+  if @_eAssert(nContext, cls.isObject(rs.not), { group: 'json-schema-validation', section: '5.5.6.1.a' }, ps)
     return
 
-  rs.not = @_normalizeAssert(context, rs.not, ['not'], { group: 'json-schema-validation', section: '5.5.6.1.b' }, ps)
+  rs.not = @_normalizeAssert(nContext, rs.not, ['not'], { group: 'json-schema-validation', section: '5.5.6.1.b' }, ps)
 
-  context.nodeOut.not = rs.not
+  nContext.nodeOut.not = rs.not
 
   return
