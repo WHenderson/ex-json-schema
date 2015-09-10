@@ -3,8 +3,6 @@ class Context
     @path = path ? []
     @parent = parent ? null
 
-    @messages = []
-
   _error: (message, info = {}, innerErrors = []) ->
     new SchemaError(
       message,
@@ -14,12 +12,10 @@ class Context
     )
 
   msg: (level, message, info, innerErrors) ->
-    error = @_error(message, info, innerErrors)
-    @messages.push({
+    return {
       level: level
-      error: error
-    })
-    return error
+      error: @_error(message, info, innerErrors)
+    }
 
   msgError: (message, info, innerErrors) ->
     @msg('error', message, info, innerErrors)

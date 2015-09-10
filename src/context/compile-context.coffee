@@ -4,14 +4,13 @@ class CompileContext extends Context
 
     @node = schema
 
-    @errors = []
+    @messages = parent?.messages ? []
 
   newChildContext: (subSchema, path) ->
     new @constructor(subSchema, path, @)
 
   msg: (level, message, info, innerErrors) ->
-    error = super(level, message, info, innerErrors)
-    if level == 'error'
-      @errors.push(error)
+    message = super(level, message, info, innerErrors)
+    @messages.push(message)
 
-    return error
+    return message

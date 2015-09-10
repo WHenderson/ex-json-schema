@@ -5,14 +5,16 @@ class NormalizeContext extends Context
     @nodeIn = schema
     @nodeOut = {}
 
+    @messages = parent?.errors ? []
     @errors = []
 
   newChildContext: (node, path) ->
     new @constructor(node, path, @)
 
   msg: (level, message, info, innerErrors) ->
-    error = super(level, message, info, innerErrors)
-    if level == 'error'
-      @errors.push(error)
+    message = super(level, message, info, innerErrors)
+    @messages.push(message)
+    if message.level == 'error'
+      @errors.push(message.error)
 
-    return error
+    return message
