@@ -99,7 +99,7 @@ Engine::_c_json_schema_validation__5_5_5_oneOf = (cContext) ->
     @_eAssert(
       vContext,
       matches.length == 1,
-      { group: 'json-schema-validation', section: '5.5.4.2.a' },
+      { group: 'json-schema-validation', section: '5.5.5.2.a' },
       {
         partialSchema: ps
         cContext: cContext

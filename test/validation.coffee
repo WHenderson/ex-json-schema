@@ -57,7 +57,7 @@ suite('validation', () ->
   engine = null
   setup(() ->
     exJsonSchema = require('../dist/ex-json-schema.coffee')
-    engine = new Engine()
+    engine = new exJsonSchema()
   )
 
   for testFilePath in testFilePaths

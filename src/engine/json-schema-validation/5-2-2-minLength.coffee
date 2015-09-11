@@ -50,6 +50,6 @@ Engine::_c_json_schema_validation__5_2_2_minLength = (cContext) ->
 
   return (vContext) =>
     if cls.isString(vContext.value)
-      @_eAssert(vContext, cls.stringLength(vContext.value) >= ps.minLength, { group: 'json-schema-validation', section: '5.2.1.2.a' }, ei)
+      @_eAssert(vContext, cls.stringLength(vContext.value) >= ps.minLength, { group: 'json-schema-validation', section: '5.2.2.2.a' }, ei)
 
     return

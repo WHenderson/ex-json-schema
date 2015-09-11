@@ -126,6 +126,7 @@ gulpTestCoverage = () ->
   .src(
     [
       'test/coverage.coffee'
+      'test/validation.coffee'
     ],
     {
       read: false

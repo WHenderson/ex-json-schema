@@ -28,7 +28,7 @@
                 "valid": false,
                 "errors": [
                     {
-                        "message": "does not match \"anyOf\" schemas",
+                        "message": "matches more than \"oneOf\" schemas",
                         "info": {
                             "partialSchema": {
                                 "oneOf": [
@@ -65,7 +65,7 @@
                             },
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.5.4.2.a"
+                                "section": "5.5.5.2.a"
                             }
                         },
                         "path": "/"
@@ -78,7 +78,7 @@
                 "valid": false,
                 "errors": [
                     {
-                        "message": "does not match \"anyOf\" schemas",
+                        "message": "does not match \"oneOf\" schemas",
                         "info": {
                             "partialSchema": {
                                 "oneOf": [
@@ -99,7 +99,7 @@
                             },
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.5.4.2.a"
+                                "section": "5.5.5.2.a"
                             }
                         },
                         "path": "/",
@@ -177,7 +177,7 @@
                         "path": "/"
                     },
                     {
-                        "message": "does not match \"anyOf\" schemas",
+                        "message": "matches more than \"oneOf\" schemas",
                         "info": {
                             "partialSchema": {
                                 "oneOf": [
@@ -208,7 +208,7 @@
                             },
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.5.4.2.a"
+                                "section": "5.5.5.2.a"
                             }
                         },
                         "path": "/"
@@ -226,7 +226,7 @@
                 "valid": false,
                 "errors": [
                     {
-                        "message": "does not match \"anyOf\" schemas",
+                        "message": "matches more than \"oneOf\" schemas",
                         "info": {
                             "partialSchema": {
                                 "oneOf": [
@@ -257,7 +257,7 @@
                             },
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.5.4.2.a"
+                                 "section": "5.5.5.2.a"
                             }
                         },
                         "path": "/"

@@ -19,7 +19,7 @@
                 "valid": false,
                 "errors": [
                     {
-                        "message": "is longer than undefined characters",
+                        "message": "is shorter than 2 characters",
                         "info": {
                             "partialSchema": {
                                 "minLength": 2
@@ -27,7 +27,7 @@
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.2.1.2.a"
+                                "section": "5.2.2.2.a"
                             }
                         },
                         "path": "/"
@@ -45,7 +45,7 @@
                 "valid": false,
                 "errors": [
                     {
-                        "message": "is longer than undefined characters",
+                        "message": "is shorter than 2 characters",
                         "info": {
                             "partialSchema": {
                                 "minLength": 2
@@ -53,7 +53,7 @@
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.2.1.2.a"
+                                "section": "5.2.2.2.a"
                             }
                         },
                         "path": "/"

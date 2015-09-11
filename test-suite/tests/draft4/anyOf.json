@@ -176,7 +176,7 @@
                                 "path": "/"
                             },
                             {
-                                "message": "is longer than undefined characters",
+                                "message": "is shorter than 4 characters",
                                 "info": {
                                     "partialSchema": {
                                         "minLength": 4
@@ -184,7 +184,7 @@
                                     "cContext": "/anyOf/1",
                                     "errorId": {
                                         "group": "json-schema-validation",
-                                        "section": "5.2.1.2.a"
+                                        "section": "5.2.2.2.a"
                                     }
                                 },
                                 "path": "/"
