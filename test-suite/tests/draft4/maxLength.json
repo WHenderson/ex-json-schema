@@ -16,7 +16,23 @@
             {
                 "description": "too long is invalid",
                 "data": "foo",
-                "valid": false
+                "valid": false,
+                "errors": [
+                    {
+                        "message": "is longer than 2 characters",
+                        "info": {
+                            "partialSchema": {
+                                "maxLength": 2
+                            },
+                            "cContext": "/",
+                            "errorId": {
+                                "group": "json-schema-validation",
+                                "section": "5.2.1.2.a"
+                            }
+                        },
+                        "path": "/"
+                    }
+                ]
             },
             {
                 "description": "ignores non-strings",

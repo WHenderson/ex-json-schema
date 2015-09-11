@@ -1,29 +1,31 @@
 [
     {
-        "description": "maximum validation",
-        "schema": {"maximum": 3.0},
+        "description": "minimum validation",
+        "schema": {
+            "minimum": 1.1
+        },
         "tests": [
             {
-                "description": "below the maximum is valid",
+                "description": "above the minimum is valid",
                 "data": 2.6,
                 "valid": true
             },
             {
-                "description": "above the maximum is invalid",
-                "data": 3.5,
+                "description": "below the minimum is invalid",
+                "data": 0.6,
                 "valid": false,
                 "errors": [
                     {
-                        "message": "is more than (inclusive) maximum 3",
+                        "message": "is less than (inclusive) minimum 1.1",
                         "info": {
                             "partialSchema": {
-                                "maximum": 3,
-                                "exclusiveMaximum": false
+                                "minimum": 1.1,
+                                "exclusiveMinimum": false
                             },
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.1.2.2.a"
+                                "section": "5.1.3.2.a"
                             }
                         },
                         "path": "/"
@@ -38,33 +40,33 @@
         ]
     },
     {
-        "description": "exclusiveMaximum validation",
+        "description": "exclusiveMinimum validation",
         "schema": {
-            "maximum": 3.0,
-            "exclusiveMaximum": true
+            "minimum": 1.1,
+            "exclusiveMinimum": true
         },
         "tests": [
             {
-                "description": "below the maximum is still valid",
-                "data": 2.2,
+                "description": "above the minimum is still valid",
+                "data": 1.2,
                 "valid": true
             },
             {
                 "description": "boundary point is invalid",
-                "data": 3.0,
+                "data": 1.1,
                 "valid": false,
                 "errors": [
                     {
-                        "message": "is more than (exclusive) maximum 3",
+                        "message": "is less than (exclusive) minimum 1.1",
                         "info": {
                             "partialSchema": {
-                                "maximum": 3,
-                                "exclusiveMaximum": true
+                                "minimum": 1.1,
+                                "exclusiveMinimum": true
                             },
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.1.2.2.a"
+                                "section": "5.1.3.2.a"
                             }
                         },
                         "path": "/"

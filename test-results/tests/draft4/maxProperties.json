@@ -1,33 +1,44 @@
 [
     {
-        "description": "minProperties validation",
-        "schema": {"minProperties": 1},
+        "description": "maxProperties validation",
+        "schema": {
+            "maxProperties": 2
+        },
         "tests": [
             {
-                "description": "longer is valid",
-                "data": {"foo": 1, "bar": 2},
+                "description": "shorter is valid",
+                "data": {
+                    "foo": 1
+                },
                 "valid": true
             },
             {
                 "description": "exact length is valid",
-                "data": {"foo": 1},
+                "data": {
+                    "foo": 1,
+                    "bar": 2
+                },
                 "valid": true
             },
             {
-                "description": "too short is invalid",
-                "data": {},
+                "description": "too long is invalid",
+                "data": {
+                    "foo": 1,
+                    "bar": 2,
+                    "baz": 3
+                },
                 "valid": false,
                 "errors": [
                     {
-                        "message": "has less than 1 properties",
+                        "message": "has more than 2 properties",
                         "info": {
                             "partialSchema": {
-                                "minProperties": 1
+                                "maxProperties": 2
                             },
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.4.2.2.a"
+                                "section": "5.4.1.2.a"
                             }
                         },
                         "path": "/"
@@ -36,7 +47,7 @@
             },
             {
                 "description": "ignores non-objects",
-                "data": "",
+                "data": "foobar",
                 "valid": true
             }
         ]

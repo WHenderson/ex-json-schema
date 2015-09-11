@@ -1,0 +1,173 @@
+[
+    {
+        "description": "integer",
+        "schema": {
+            "type": "integer"
+        },
+        "tests": [
+            {
+                "description": "a bignum is an integer",
+                "data": 1.2345678910111214e+52,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "number",
+        "schema": {
+            "type": "number"
+        },
+        "tests": [
+            {
+                "description": "a bignum is a number",
+                "data": 9.824928374923492e+52,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "integer",
+        "schema": {
+            "type": "integer"
+        },
+        "tests": [
+            {
+                "description": "a negative bignum is an integer",
+                "data": -1.2345678910111214e+52,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "number",
+        "schema": {
+            "type": "number"
+        },
+        "tests": [
+            {
+                "description": "a negative bignum is a number",
+                "data": -9.824928374923492e+52,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "string",
+        "schema": {
+            "type": "string"
+        },
+        "tests": [
+            {
+                "description": "a bignum is not a string",
+                "data": 9.824928374923492e+52,
+                "valid": false,
+                "errors": [
+                    {
+                        "message": "must be a string",
+                        "info": {
+                            "partialSchema": {
+                                "type": [
+                                    "string"
+                                ]
+                            },
+                            "cContext": "/",
+                            "errorId": {
+                                "group": "json-schema-validation",
+                                "section": "5.5.2.2.a"
+                            }
+                        },
+                        "path": "/"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "description": "integer comparison",
+        "schema": {
+            "maximum": 18446744073709552000
+        },
+        "tests": [
+            {
+                "description": "comparison works for high numbers",
+                "data": 18446744073709552000,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "float comparison with high precision",
+        "schema": {
+            "maximum": 9.727837981879871e+26,
+            "exclusiveMaximum": true
+        },
+        "tests": [
+            {
+                "description": "comparison works for high numbers",
+                "data": 9.727837981879871e+26,
+                "valid": false,
+                "errors": [
+                    {
+                        "message": "is more than (exclusive) maximum 9.727837981879871e+26",
+                        "info": {
+                            "partialSchema": {
+                                "maximum": 9.727837981879871e+26,
+                                "exclusiveMaximum": true
+                            },
+                            "cContext": "/",
+                            "errorId": {
+                                "group": "json-schema-validation",
+                                "section": "5.1.2.2.a"
+                            }
+                        },
+                        "path": "/"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "description": "integer comparison",
+        "schema": {
+            "minimum": -18446744073709552000
+        },
+        "tests": [
+            {
+                "description": "comparison works for very negative numbers",
+                "data": -18446744073709552000,
+                "valid": true
+            }
+        ]
+    },
+    {
+        "description": "float comparison with high precision on negative numbers",
+        "schema": {
+            "minimum": -9.727837981879871e+26,
+            "exclusiveMinimum": true
+        },
+        "tests": [
+            {
+                "description": "comparison works for very negative numbers",
+                "data": -9.727837981879871e+26,
+                "valid": false,
+                "errors": [
+                    {
+                        "message": "is less than (exclusive) minimum -9.727837981879871e+26",
+                        "info": {
+                            "partialSchema": {
+                                "minimum": -9.727837981879871e+26,
+                                "exclusiveMinimum": true
+                            },
+                            "cContext": "/",
+                            "errorId": {
+                                "group": "json-schema-validation",
+                                "section": "5.1.3.2.a"
+                            }
+                        },
+                        "path": "/"
+                    }
+                ]
+            }
+        ]
+    }
+]

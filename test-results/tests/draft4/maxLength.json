@@ -1,28 +1,35 @@
 [
     {
-        "description": "pattern validation",
-        "schema": {"pattern": "^a*$"},
+        "description": "maxLength validation",
+        "schema": {
+            "maxLength": 2
+        },
         "tests": [
             {
-                "description": "a matching pattern is valid",
-                "data": "aaa",
+                "description": "shorter is valid",
+                "data": "f",
                 "valid": true
             },
             {
-                "description": "a non-matching pattern is invalid",
-                "data": "abc",
+                "description": "exact length is valid",
+                "data": "fo",
+                "valid": true
+            },
+            {
+                "description": "too long is invalid",
+                "data": "foo",
                 "valid": false,
                 "errors": [
                     {
-                        "message": "does not match pattern ^a*$",
+                        "message": "is longer than 2 characters",
                         "info": {
                             "partialSchema": {
-                                "pattern": "^a*$"
+                                "maxLength": 2
                             },
                             "cContext": "/",
                             "errorId": {
                                 "group": "json-schema-validation",
-                                "section": "5.2.3.2.a"
+                                "section": "5.2.1.2.a"
                             }
                         },
                         "path": "/"
@@ -31,18 +38,12 @@
             },
             {
                 "description": "ignores non-strings",
-                "data": true,
+                "data": 100,
                 "valid": true
-            }
-        ]
-    },
-    {
-        "description": "pattern is not anchored",
-        "schema": {"pattern": "a+"},
-        "tests": [
+            },
             {
-                "description": "matches a substring",
-                "data": "xxaayy",
+                "description": "two supplementary Unicode code points is long enough",
+                "data": "💩💩",
                 "valid": true
             }
         ]

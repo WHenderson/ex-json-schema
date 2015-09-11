@@ -145,7 +145,7 @@
         "description": "oneOf with base schema",
         "schema": {
             "type": "string",
-            "oneOf" : [
+            "oneOf": [
                 {
                     "minLength": 2
                 },

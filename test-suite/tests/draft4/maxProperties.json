@@ -16,7 +16,23 @@
             {
                 "description": "too long is invalid",
                 "data": {"foo": 1, "bar": 2, "baz": 3},
-                "valid": false
+                "valid": false,
+                "errors": [
+                    {
+                        "message": "has more than 2 properties",
+                        "info": {
+                            "partialSchema": {
+                                "maxProperties": 2
+                            },
+                            "cContext": "/",
+                            "errorId": {
+                                "group": "json-schema-validation",
+                                "section": "5.4.1.2.a"
+                            }
+                        },
+                        "path": "/"
+                    }
+                ]
             },
             {
                 "description": "ignores non-objects",
