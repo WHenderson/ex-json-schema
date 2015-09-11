@@ -22,6 +22,7 @@ suite('5.4.2 minProperties', () ->
         }
         "level": "error"
         "message": "The value of \"minProperties\" keyword MUST be an integer."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.4.2 minProperties', () ->
         }
         "level": "error"
         "message": "The value of \"minProperties\" MUST be greater than, or equal to, 0."
+        "path": "/"
       }
     ]
   )

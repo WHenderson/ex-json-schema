@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_2_1_1_b = (id, info, nContext) ->
   'The value of "maxLength" MUST be greater than, or equal to, 0'
 
 Engine::_m_json_schema_validation__5_2_1_2_a = (id, info, vContext) ->
-  "is longer than #{partialSchema.maxLength} characters"
+  "is longer than #{info.partialSchema.maxLength} characters"
 
 Engine::_n_json_schema_validation__5_2_1_maxLength = (nContext) ->
   cls = @constructor

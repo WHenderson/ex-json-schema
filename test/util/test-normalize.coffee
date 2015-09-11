@@ -28,6 +28,7 @@ testNormalize = (
         result = {
           message: error.message
           info: error.info
+          path: error.context.pathString()
         }
         if error.innerErrors? and error.innerErrors.length != 0
           result.innerErrors = mapErrors(error.innerErrors)
@@ -40,6 +41,7 @@ testNormalize = (
           level: message.level
           message: message.error.message
           info: message.error.info
+          path: message.error.context.pathString()
         }
         if message.error.innerErrors? and message.error.innerErrors.length != 0
           result.innerErrors = mapErrors(message.error.innerErrors)

@@ -18,3 +18,6 @@ class NormalizeContext extends Context
       @errors.push(message.error)
 
     return message
+
+  success: () ->
+    return @errors.length == 0

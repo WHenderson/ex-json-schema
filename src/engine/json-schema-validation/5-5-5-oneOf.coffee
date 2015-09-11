@@ -10,6 +10,12 @@ Engine::_m_json_schema_validation__5_5_5_1_c = (id, info, nContext) ->
 Engine::_m_json_schema_validation__5_5_5_1_d = (id, info, nContext) ->
   'Elements of "oneOf" MUST be valid JSON Schemas'
 
+Engine::_m_json_schema_validation__5_5_5_2_a = (id, info, vContext) ->
+  if info.details.matches.length == 0
+    'does not match "oneOf" schemas'
+  else
+    'matches more than "oneOf" schemas'
+
 Engine::_n_json_schema_validation__5_5_5_oneOf = (nContext) ->
   cls = @constructor
   ps = {
@@ -45,3 +51,63 @@ Engine::_n_json_schema_validation__5_5_5_oneOf = (nContext) ->
   nContext.nodeOut.oneOf = rs.oneOf
 
   return
+
+Engine::_c_json_schema_validation__5_5_5_oneOf = (cContext) ->
+  cls = @constructor
+  ps = {
+    oneOf: cContext.node.oneOf
+  }
+
+  if ps.oneOf == undefined
+    return
+
+  ei = {
+    partialSchema: ps
+    cContext: cContext
+  }
+
+
+  v = {
+  }
+
+  v.oneOf = do =>
+    results = []
+    for subSchema, iSubSchema in ps.oneOf
+      validator = @_compileChild(cContext, subSchema, ['oneOf', iSubSchema])
+
+      results.push({
+        index: iSubSchema
+        subSchema: subSchema
+        validator: validator
+      })
+
+    return results
+
+  return (vContext) =>
+    matches = []
+    innerErrors = []
+    for info, iValidator in v.oneOf
+      vChildContext = @_validateDiscreteChild(vContext, info.validator, vContext.value, [])
+      if vChildContext.success()
+        matches.push({
+          index: info.index
+          subSchema: info.subSchema
+        })
+      else
+        innerErrors.push.apply(innerErrors, vChildContext.localErrors)
+
+    @_eAssert(
+      vContext,
+      matches.length == 1,
+      { group: 'json-schema-validation', section: '5.5.4.2.a' },
+      {
+        partialSchema: ps
+        cContext: cContext
+        details: {
+          matches: matches
+        }
+      },
+      innerErrors
+    )
+
+    return

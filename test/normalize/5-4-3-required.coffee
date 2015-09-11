@@ -22,6 +22,7 @@ suite('5.4.3 required', () ->
         }
         "level": "error"
         "message": "The value of \"required\" keyword MUST be an array"
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.4.3 required', () ->
         }
         "level": "error"
         "message": "The value of \"required\" array MUST have at least one element"
+        "path": "/"
       }
     ]
   )
@@ -72,6 +74,7 @@ suite('5.4.3 required', () ->
         }
         "level": "error"
         "message": "Elements of \"required\" MUST be strings"
+        "path": "/"
       }
     ]
   )
@@ -102,6 +105,7 @@ suite('5.4.3 required', () ->
         }
         "level": "error"
         "message": "Elements of \"required\" MUST be unique"
+        "path": "/"
       }
     ]
   )

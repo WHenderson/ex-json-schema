@@ -3,7 +3,8 @@ class ValidateContext extends Context
     super(path, parent)
 
     @messages = []
-    @errors = if discrete then [] else (parent?.errors ? [])
+    @localErrors = []
+    @errors = if discrete or not parent?.errors? then @localErrors else parent.errors
 
   newChildContext: (value, path) ->
     new @constructor(value, path, @)
@@ -15,6 +16,11 @@ class ValidateContext extends Context
     message = super(level, message, info, innerErrors)
     @messages.push(message)
     if message.level == 'error'
-      @errors.push(message.error)
+      @localErrors.push(message.error)
+      if @localErrors != @errors
+        @errors.push(message.error)
 
     return message
+
+  success: () ->
+    return @localErrors.length == 0

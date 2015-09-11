@@ -23,6 +23,7 @@ suite('5.1.3 minimum and exclusiveMinimum', () ->
         }
         "level": "error"
         "message": "The value of \"minimum\" MUST be a JSON number."
+        "path": "/"
       }
     ]
   )
@@ -48,6 +49,7 @@ suite('5.1.3 minimum and exclusiveMinimum', () ->
         }
         "level": "error"
         "message": "The value of \"exclusiveMinimum\" MUST be a boolean."
+        "path": "/"
       }
     ]
   )
@@ -73,6 +75,7 @@ suite('5.1.3 minimum and exclusiveMinimum', () ->
         }
         "level": "error"
         "message": "If \"exclusiveMinimum\" is present, \"minimum\" MUST also be present."
+        "path": "/"
       }
     ]
   )

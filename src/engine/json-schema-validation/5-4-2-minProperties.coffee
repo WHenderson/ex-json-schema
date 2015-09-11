@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_4_2_1_b = (id, info, nContext) ->
   'The value of "minProperties" MUST be greater than, or equal to, 0.'
 
 Engine::_m_json_schema_validation__5_4_2_2_a = (id, info, vContext) ->
-  "has less than #{partialSchema.minProperties} properties"
+  "has less than #{info.partialSchema.minProperties} properties"
 
 Engine::_n_json_schema_validation__5_4_2_minProperties = (nContext) ->
   cls = @constructor
@@ -36,7 +36,7 @@ Engine::_n_json_schema_validation__5_4_2_minProperties = (nContext) ->
 Engine::_c_json_schema_validation__5_4_1_minProperties = (cContext) ->
   cls = @constructor
   ps = {
-    minProperties: cContext.nodeIn.minProperties
+    minProperties: cContext.node.minProperties
   }
 
   if ps.minProperties == undefined

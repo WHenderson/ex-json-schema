@@ -32,7 +32,7 @@ Engine::_n_json_schema_validation__5_3_4_uniqueItems = (nContext) ->
 Engine::_c_json_schema_validation__5_3_4_uniqueItems = (cContext) ->
   cls = @constructor
   ps = {
-    uniqueItems: cContext.nodeIn.uniqueItems
+    uniqueItems: cContext.node.uniqueItems
   }
 
   if ps.uniqueItems == undefined

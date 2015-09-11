@@ -22,6 +22,7 @@ suite('7 format', () ->
         }
         "level": "error"
         "message": "The value of \"format\" MUST be a string."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('7 format', () ->
         }
         "level": "warning"
         "message": "The value of \"format\" SHOULD be a known format string."
+        "path": "/"
       }
     ]
   )
@@ -88,20 +90,6 @@ suite('7 format', () ->
     '7.3.6. uri',
     {
       format: 'uri'
-    }
-  )
-
-  testNormalize(
-    '7.1. email',
-    {
-      format: 'email'
-    }
-  )
-
-  testNormalize(
-    '7.1. email',
-    {
-      format: 'email'
     }
   )
 

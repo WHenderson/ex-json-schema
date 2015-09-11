@@ -8,7 +8,7 @@ Engine::_m_json_schema_validation__5_1_2_1_c = (id, info, nContext) ->
   'If "exclusiveMaximum" is present, "maximum" MUST also be present.'
 
 Engine::_m_json_schema_validation__5_1_2_2_a = (id, info, vContext) ->
-  "is more than (#{if partialSchema.exclusiveMaximum then 'exclusive' else 'inclusive'}) maximum #{partialSchema.maximum}"
+  "is more than (#{if info.partialSchema.exclusiveMaximum then 'exclusive' else 'inclusive'}) maximum #{info.partialSchema.maximum}"
 
 Engine::_n_json_schema_validation__5_1_2_maximum_exclusiveMaximum = (nContext) ->
   cls = @constructor

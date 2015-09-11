@@ -22,6 +22,7 @@ suite('5.2.2 minLength', () ->
         }
         "level": "error"
         "message": "The value of \"minLength\" keyword MUST be an integer"
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.2.2 minLength', () ->
         }
         "level": "error"
         "message": "The value of \"minLength\" MUST be greater than, or equal to, 0"
+        "path": "/"
       }
     ]
   )

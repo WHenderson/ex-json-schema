@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_3_2_1_b = (id, info, nContext) ->
   'The value of "maxItems" MUST be greater than, or equal to, 0'
 
 Engine::_m_json_schema_validation__5_3_2_2_a = (id, info, vContext) ->
-  "has more than #{partialSchema.maxItems} elements"
+  "has more than #{info.partialSchema.maxItems} elements"
 
 Engine::_n_json_schema_validation__5_3_2_maxItems = (nContext) ->
   cls = @constructor

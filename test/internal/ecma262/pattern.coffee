@@ -4,7 +4,7 @@ suite('pattern', () ->
   exJsonSchema = null
 
   setup(() ->
-    @timeout(3000)
+    @timeout(10000)
     exJsonSchema = require('../../../dist/ex-json-schema.coffee')
   )
 

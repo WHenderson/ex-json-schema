@@ -22,6 +22,7 @@ suite('5.2.3 pattern', () ->
         }
         "level": "error"
         "message": "The value of \"pattern\" MUST be a string."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.2.3 pattern', () ->
         }
         "level": "warning"
         "message": "The value of \"pattern\" SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect."
+        "path": "/"
       }
     ]
   )

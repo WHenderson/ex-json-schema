@@ -22,6 +22,7 @@ suite('5.5.6 not', () ->
         }
         "level": "error"
         "message": "The value of \"not\" MUST be an object."
+        "path": "/"
       }
     ]
   )
@@ -60,10 +61,12 @@ suite('5.5.6 not', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/not"
           }
         ]
         "level": "error"
         "message": "The value of \"not\" MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )

@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_2_3_1_b = (id, info, nContext) ->
   'The value of "pattern" SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.'
 
 Engine::_m_json_schema_validation__5_2_3_2_a = (id, info, vContext) ->
-  "does not match pattern #{partialSchema.pattern}"
+  "does not match pattern #{info.partialSchema.pattern}"
 
 Engine::_n_json_schema_validation__5_2_3_pattern = (nContext) ->
   cls = @constructor

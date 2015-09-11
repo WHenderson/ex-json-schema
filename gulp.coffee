@@ -98,9 +98,9 @@ gulpBuild = () ->
       'src/engine/json-schema-core/*.coffee'
       'src/engine/json-schema-validation/*.coffee'
     ])
-  .pipe(gConcat('ex-json-schema.coffee', {newLine: '\r\n'}))
   .pipe(gCoffeeLint())
   .pipe(gCoffeeLint.reporter())
+  .pipe(gConcat('ex-json-schema.coffee', {newLine: '\r\n'}))
   .pipe(gMirror(
     pipeCoffee(),
     (

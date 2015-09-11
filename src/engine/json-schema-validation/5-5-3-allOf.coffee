@@ -45,3 +45,35 @@ Engine::_n_json_schema_validation__5_5_3_allOf = (nContext) ->
   nContext.nodeOut.allOf = rs.allOf
 
   return
+
+Engine::_c_json_schema_validation__5_5_3_allOf = (cContext) ->
+  cls = @constructor
+  ps = {
+    allOf: cContext.node.allOf
+  }
+
+  if ps.allOf == undefined
+    return
+
+  v = {
+  }
+
+  v.allOf = do =>
+    results = []
+    for subSchema, iSubSchema in ps.allOf
+      validator = @_compileChild(cContext, subSchema, ['allOf', iSubSchema])
+      if not validator?
+        continue
+
+      results.push(validator)
+
+    return results
+
+  if v.allOf.length == 0
+    return
+
+  return (vContext) =>
+    for validator in v.allOf
+      @_validateChild(vContext, validator, vContext.value, [])
+
+    return

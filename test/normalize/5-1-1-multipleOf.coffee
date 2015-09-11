@@ -22,6 +22,7 @@ suite('5.1.1 multipleOf', () ->
         }
         "level": "error"
         "message": "The value of \"multipleOf\" MUST be a JSON number"
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.1.1 multipleOf', () ->
         }
         "level": "error"
         "message": "The value of \"multipleOf\" MUST be strictly greater than 0"
+        "path": "/"
       }
     ]
   )

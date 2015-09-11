@@ -44,5 +44,5 @@ Engine::_normalizeApply = (nContext) ->
 # @returns {Object} resulting schema
 Engine::_normalizeAssert = (nContext, schema, path, errorMessage, partialSchema) ->
   childContext = @_normalizeChild(nContext, schema, path)
-  @_eAssert(nContext, childContext.errors.length == 0, errorMessage, partialSchema, childContext.errors)
+  @_eAssert(nContext, childContext.success(), errorMessage, partialSchema, childContext.errors)
   return childContext.nodeOut

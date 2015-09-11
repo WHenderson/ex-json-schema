@@ -22,6 +22,7 @@ suite('5.2.1 maxLength', () ->
         }
         "level": "error"
         "message": "The value of \"maxLength\" keyword MUST be an integer"
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.2.1 maxLength', () ->
         }
         "level": "error"
         "message": "The value of \"maxLength\" MUST be greater than, or equal to, 0"
+        "path": "/"
       }
     ]
   )

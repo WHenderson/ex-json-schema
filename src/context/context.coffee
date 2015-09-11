@@ -1,7 +1,7 @@
 class Context
   constructor: (path, parent) ->
-    @path = path ? []
-    @parent = parent ? null
+    @_path = path ? []
+    @_parent = parent ? null
 
   _error: (message, info = {}, innerErrors = []) ->
     new SchemaError(
@@ -32,25 +32,25 @@ class Context
   @pathUnescapeSegment: (segment) ->
     segment.replace(/~1/g, '/').replace(/~0/g, '~')
 
-  pathLocal: () ->
-    @path ? []
+  pathLocalArray: () ->
+    @_path ? []
 
-  pathGlobal: () ->
+  pathArray: () ->
     result = []
     context = @
     while context?
-      result.unshift.apply(result, context.path)
-      context = context.parent
+      result.unshift.apply(result, context._path)
+      context = context._parent
 
     return result
 
   pathLocalString: () ->
     cls = @constructor
-    return @pathLocal().map(cls.pathEscapeSegment).join('/')
+    return @pathLocalArray().map(cls.pathEscapeSegment).join('/')
 
-  pathGlobalString: () ->
+  pathString: () ->
     cls = @constructor
-    return @pathGlobal().map(cls.pathEscapeSegment).join('/')
+    return '/' + @pathArray().map(cls.pathEscapeSegment).join('/')
 
   newChildContext: (path) ->
     new @constructor(path, @)

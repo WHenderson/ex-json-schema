@@ -23,6 +23,7 @@ suite('5.3.1 additionalItems and items', () ->
         }
         "level": "error"
         "message": "The value of \"additionalItems\" MUST be either a boolean or an object."
+        "path": "/"
       }
     ]
   )
@@ -64,10 +65,12 @@ suite('5.3.1 additionalItems and items', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/additionalItems"
           }
         ]
         "level": "error"
         "message": "If \"additionalItems\" is an object, it MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -93,6 +96,7 @@ suite('5.3.1 additionalItems and items', () ->
         }
         "level": "error"
         "message": "The value of \"items\" MUST be either an object or an array."
+        "path": "/"
       }
     ]
   )
@@ -131,10 +135,12 @@ suite('5.3.1 additionalItems and items', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/items"
           }
         ]
         "level": "error"
         "message": "If \"items\" is an object, this object MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -167,6 +173,7 @@ suite('5.3.1 additionalItems and items', () ->
         }
         "level": "error"
         "message": "If \"items\" is an array, items of this array MUST be objects, and each of these objects MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )

@@ -114,7 +114,7 @@ Engine::_c_json_schema_validation__5_4_5_dependencies = (cContext) ->
           if cls.isArray(dependency)
             for dependent in dependency
               @_eAssert(
-                nContext,
+                vContext,
                 hasDependent(dependent),
                 { group: 'json-schema-validation', section: '5.4.5.2.2.a' },
                 {

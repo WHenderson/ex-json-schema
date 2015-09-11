@@ -16,6 +16,6 @@ var validator = engine.compile({
 
 });
 
-var context = validator(['a','b',1]);
+var context = validator(['a','b',2]);
 
 console.log(util.inspect(context, { depth: null }));

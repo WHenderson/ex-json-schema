@@ -144,18 +144,20 @@ Engine::_c_json_schema_validation__5_4_4_additionalProperties_properties_pattern
         found = false
 
         if hasProperty(name)
-          @_validateChild(vContext, v.properties[name], value, [name])
+          if (validator = v.properties[name])
+            @_validateChild(vContext, validator, value, [name])
           found = true
 
         for patternProperty in v.patternProperties
           if patternProperty.e.test(name)
-            @_validateChild(vContext, patternProperty.v, value, [name])
+            if (validator = patternProperty.v)
+              @_validateChild(vContext, validator, value, [name])
             found = true
 
         if not found
           hasAdditionalProperties = true
-          if v.additionalProperties != false
-            @_validateChild(vContext, v.additionalProperties, value, [name])
+          if (validator = v.additionalProperties) != false and validator?
+            @_validateChild(vContext, validator, value, [name])
 
       @_eAssert(vContext, not hasAdditionalProperties or v.additionalProperties != false, { group: 'json-schema-validation', section: '5.4.4.2.a' }, ei)
 

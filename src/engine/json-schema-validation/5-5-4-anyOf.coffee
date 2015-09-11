@@ -10,6 +10,9 @@ Engine::_m_json_schema_validation__5_5_4_1_c = (id, info, nContext) ->
 Engine::_m_json_schema_validation__5_5_4_1_d = (id, info, nContext) ->
   'Elements of "anyOf" MUST be valid JSON Schemas'
 
+Engine::_m_json_schema_validation__5_5_4_2_a = (id, info, vContext) ->
+  'does not match "anyOf" schemas'
+
 Engine::_n_json_schema_validation__5_5_4_anyOf = (nContext) ->
   cls = @constructor
   ps = {
@@ -45,3 +48,49 @@ Engine::_n_json_schema_validation__5_5_4_anyOf = (nContext) ->
   nContext.nodeOut.anyOf = rs.anyOf
 
   return
+
+Engine::_c_json_schema_validation__5_5_4_anyOf = (cContext) ->
+  cls = @constructor
+  ps = {
+    anyOf: cContext.node.anyOf
+  }
+
+  if ps.anyOf == undefined
+    return
+
+  ei = {
+    partialSchema: ps
+    cContext: cContext
+  }
+
+  v = {
+  }
+
+  truthy = false
+  v.anyOf = do =>
+    results = []
+    for subSchema, iSubSchema in ps.anyOf
+      validator = @_compileChild(cContext, subSchema, ['anyOf', iSubSchema])
+      if not validator?
+        truthy = true
+        continue
+
+      results.push(validator)
+
+    return results
+
+  if truthy
+    return
+
+  return (vContext) =>
+    innerErrors = []
+    for validator in v.anyOf
+      vChildContext = @_validateDiscreteChild(vContext, validator, vContext.value, [])
+      if vChildContext.success()
+        return
+      else
+        innerErrors.push.apply(innerErrors, vChildContext.localErrors)
+
+    @_eAssert(vContext, false, { group: 'json-schema-validation', section: '5.5.4.2.a' }, ei, innerErrors)
+
+    return

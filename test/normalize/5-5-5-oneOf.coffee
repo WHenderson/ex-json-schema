@@ -22,6 +22,7 @@ suite('5.5.5 oneOf', () ->
         }
         "level": "error"
         "message": "The value of \"oneOf\" MUST be an array."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.5.5 oneOf', () ->
         }
         "level": "error"
         "message": "The value of \"oneOf\" MUST have at least one element."
+        "path": "/"
       }
     ]
   )
@@ -73,6 +75,7 @@ suite('5.5.5 oneOf', () ->
         }
         "level": "error"
         "message": "Elements of \"oneOf\" MUST be objects"
+        "path": "/"
       }
     ]
   )
@@ -113,10 +116,12 @@ suite('5.5.5 oneOf', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/oneOf/0"
           }
         ]
         "level": "error"
         "message": "Elements of \"oneOf\" MUST be valid JSON Schemas"
+        "path": "/"
       }
     ]
   )

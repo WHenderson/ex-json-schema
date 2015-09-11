@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_1_1_1_b = (id, info, nContext) ->
   'The value of \"multipleOf\" MUST be strictly greater than 0'
 
 Engine::_m_json_schema_validation__5_1_1_2_a = (id, info, vContext) ->
-  "is not a multiple of #{partialSchema.multipleOf}"
+  "is not a multiple of #{info.partialSchema.multipleOf}"
 
 Engine::_n_json_schema_validation__5_1_1_multipleOf = (nContext) ->
   cls = @constructor

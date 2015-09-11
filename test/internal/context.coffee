@@ -10,20 +10,20 @@ suite('context', () ->
   suite('path', () ->
     test('root', () ->
       context = new exJsonSchema.Context()
-      assert.deepEqual(context.pathLocal(), [], 'bad pathLocal')
-      assert.deepEqual(context.pathGlobal(), [], 'bad pathGlobal')
+      assert.deepEqual(context.pathLocalArray(), [], 'bad pathLocalArray')
+      assert.deepEqual(context.pathArray(), [], 'bad pathArray')
       assert.equal(context.pathLocalString(), '', 'bad pathLocalString')
-      assert.equal(context.pathGlobalString(), '', 'bad pathGlobalString')
+      assert.equal(context.pathString(), '/', 'bad pathString')
     )
 
     test('child', () ->
       rootContext = new exJsonSchema.Context(['a'])
       context = rootContext.newChildContext(['b','c'])
 
-      assert.deepEqual(context.pathLocal(), ['b','c'], 'bad pathLocal')
-      assert.deepEqual(context.pathGlobal(), ['a','b','c'], 'bad pathGlobal')
+      assert.deepEqual(context.pathLocalArray(), ['b','c'], 'bad pathLocal')
+      assert.deepEqual(context.pathArray(), ['a','b','c'], 'bad pathArray')
       assert.equal(context.pathLocalString(), 'b/c', 'bad pathLocalString')
-      assert.equal(context.pathGlobalString(), 'a/b/c', 'bad pathGlobalString')
+      assert.equal(context.pathString(), '/a/b/c', 'bad pathString')
     )
 
     test('escaping', () ->
@@ -36,7 +36,7 @@ suite('context', () ->
       context = rootContext.newChildContext(['b/b','c~c'])
 
       assert.equal(context.pathLocalString(), 'b~1b/c~0c', 'bad pathLocalString')
-      assert.equal(context.pathGlobalString(), 'a~1a/b~1b/c~0c', 'bad pathGlobalString')
+      assert.equal(context.pathString(), '/a~1a/b~1b/c~0c', 'bad pathGlobalString')
     )
   )
 

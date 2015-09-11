@@ -11,7 +11,7 @@ Engine::_m_json_schema_validation__5_4_3_1_d = (id, info, nContext) ->
   'Elements of "required" MUST be unique'
 
 Engine::_m_json_schema_validation__5_4_3_2_a = (id, info, vContext) ->
-  "is missing required field #{partialSchema.required}"
+  "is missing required field #{info.partialSchema.required}"
 
 Engine::_n_json_schema_validation__5_4_3_required = (nContext) ->
   cls = @constructor
@@ -72,7 +72,7 @@ Engine::_c_json_schema_validation__5_4_3_required = (cContext) ->
 
   return (vContext) =>
     if cls.isObject(vContext.value)
-      for own name, iName of ps.required
+      for name, iName in ps.required
         @_eAssert(vContext, hasProp.call(vContext.value, name), { group: 'json-schema-validation', section: '5.4.3.2.a' }, ei)
 
     return

@@ -22,6 +22,7 @@ suite('5.3.3 minItems', () ->
         }
         "level": "error"
         "message": "The value of \"minItems\" keyword MUST be an integer."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.3.3 minItems', () ->
         }
         "level": "error"
         "message": "The value of \"minItems\" MUST be greater than, or equal to, 0"
+        "path": "/"
       }
     ]
   )

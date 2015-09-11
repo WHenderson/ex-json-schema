@@ -92,7 +92,7 @@ Engine::_c_json_schema_validation__5_3_1_additionalItems_items = (cContext) ->
   if not cls.isArray(ps.items)
     # 8.2.3.1.  If `items` is a schema
 
-    v.items = @_compileChild(cContext, item, ['items'])
+    v.items = @_compileChild(cContext, ps.items, ['items'])
 
     if not v.items?
       return

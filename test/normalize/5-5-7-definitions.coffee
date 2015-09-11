@@ -22,6 +22,7 @@ suite('5.5.7 definitions', () ->
         }
         "level": "error"
         "message": "The value of \"definitions\" MUST be an object."
+        "path": "/"
       }
     ]
   )
@@ -49,6 +50,7 @@ suite('5.5.7 definitions', () ->
         }
         "level": "error"
         "message": "Each member of \"definitions\" MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )

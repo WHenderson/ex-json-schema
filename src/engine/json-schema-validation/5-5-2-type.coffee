@@ -11,16 +11,16 @@ Engine::_m_json_schema_validation__5_5_2_1_d = (id, info, nContext) ->
   'The value(s) of "type" MUST be one of the seven primitive types defined by the core specification.'
 
 Engine::_m_json_schema_validation__5_5_2_2_a = (id, info, vContext) ->
-  if partialSchema.type.length == 1
-    l_type = partialSchema.type[0]
+  if info.partialSchema.type.length == 1
+    l_type = info.partialSchema.type[0]
     if l_type.length != 0 and 'aeiou'.indexOf(l_type[0].toLowerCase()) != -1
       adverb = 'an'
     else
       adverb = 'a'
 
-    return "must be #{adverb} #{l_type[0]}"
+    return "must be #{adverb} #{l_type}"
   else
-    return "must be one of #{partialSchema.type.join(', ')}"
+    return "must be one of #{info.partialSchema.type.join(', ')}"
 
 Engine::_n_json_schema_validation__5_5_2_type = (nContext) ->
   cls = @constructor
@@ -98,7 +98,7 @@ Engine::_c_json_schema_validation__5_5_2_type = (cContext) ->
 
     return results
 
-  return (vContext) ->
+  return (vContext) =>
     @_eAssert(
       vContext,
       v.type.some(
@@ -106,7 +106,7 @@ Engine::_c_json_schema_validation__5_5_2_type = (cContext) ->
           isType(vContext.value)
       ),
       { group: 'json-schema-validation', section: '5.5.2.2.a' },
-      ps
+      ei
     )
 
     return

@@ -22,6 +22,7 @@ suite('5.5.2 type', () ->
         }
         "level": "error"
         "message": "The value of \"type\" MUST be either a string or an array."
+        "path": "/"
       }
     ]
   )
@@ -49,6 +50,7 @@ suite('5.5.2 type', () ->
         }
         "level": "error"
         "message": "If \"type\" is an array, elements of the array MUST be strings."
+        "path": "/"
       }
     ]
   )
@@ -78,6 +80,7 @@ suite('5.5.2 type', () ->
         }
         "level": "error"
         "message": "If \"type\" is an array, elements of the array MUST be unique."
+        "path": "/"
       }
     ]
   )
@@ -105,6 +108,7 @@ suite('5.5.2 type', () ->
         }
         "level": "error"
         "message": "The value(s) of \"type\" MUST be one of the seven primitive types defined by the core specification."
+        "path": "/"
       }
     ]
   )
@@ -128,6 +132,7 @@ suite('5.5.2 type', () ->
         }
         "level": "error"
         "message": "The value(s) of \"type\" MUST be one of the seven primitive types defined by the core specification."
+        "path": "/"
       }
     ]
   )

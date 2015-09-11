@@ -22,6 +22,7 @@ suite('6.1 title', () ->
         }
         "level": "error"
         "message": "The value of \"title\" MUST be a string."
+        "path": "/"
       }
     ]
   )

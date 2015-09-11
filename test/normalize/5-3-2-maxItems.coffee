@@ -22,6 +22,7 @@ suite('5.3.2 maxItems', () ->
         }
         "level": "error"
         "message": "The value of \"maxItems\" keyword MUST be an integer."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.3.2 maxItems', () ->
         }
         "level": "error"
         "message": "The value of \"maxItems\" MUST be greater than, or equal to, 0"
+        "path": "/"
       }
     ]
   )

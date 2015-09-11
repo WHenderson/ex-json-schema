@@ -8,7 +8,7 @@ Engine::_m_json_schema_validation__5_1_3_1_c = (id, info, nContext) ->
   'If "exclusiveMinimum" is present, "minimum" MUST also be present.'
 
 Engine::_m_json_schema_validation__5_1_3_2_a = (id, info, vContext) ->
-  "is less than (#{if partialSchema.exclusiveMinimum then 'exclusive' else 'inclusive'}) minimum #{partialSchema.minimum}"
+  "is less than (#{if info.partialSchema.exclusiveMinimum then 'exclusive' else 'inclusive'}) minimum #{info.partialSchema.minimum}"
 
 Engine::_n_json_schema_validation__5_1_3_minimum_exclusiveMinimum = (nContext) ->
   cls = @constructor

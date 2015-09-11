@@ -25,6 +25,7 @@ suite('6.2 default', () ->
         }
         "level": "warning"
         "message": "The value of \"default\" is not valid JSON data."
+        "path": "/"
       }
     ]
   )

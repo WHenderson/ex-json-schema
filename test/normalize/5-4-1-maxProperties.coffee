@@ -22,6 +22,7 @@ suite('5.4.1 maxProperties', () ->
         }
         "level": "error"
         "message": "The value of \"maxProperties\" keyword MUST be an integer."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.4.1 maxProperties', () ->
         }
         "level": "error"
         "message": "The value of \"maxProperties\" MUST be greater than, or equal to, 0."
+        "path": "/"
       }
     ]
   )

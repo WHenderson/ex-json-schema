@@ -22,6 +22,7 @@ suite('5.5.3 allOf', () ->
         }
         "level": "error"
         "message": "The value of \"allOf\" MUST be an array."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.5.3 allOf', () ->
         }
         "level": "error"
         "message": "The value of \"allOf\" MUST have at least one element."
+        "path": "/"
       }
     ]
   )
@@ -73,6 +75,7 @@ suite('5.5.3 allOf', () ->
         }
         "level": "error"
         "message": "Elements of \"allOf\" MUST be objects"
+        "path": "/"
       }
     ]
   )
@@ -113,10 +116,12 @@ suite('5.5.3 allOf', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/allOf/0"
           }
         ]
         "level": "error"
         "message": "Elements of \"allOf\" MUST be valid JSON Schemas"
+        "path": "/"
       }
     ]
   )

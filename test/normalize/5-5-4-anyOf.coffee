@@ -22,6 +22,7 @@ suite('5.5.4 anyOf', () ->
         }
         "level": "error"
         "message": "The value of \"anyOf\" MUST be an array."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.5.4 anyOf', () ->
         }
         "level": "error"
         "message": "The value of \"anyOf\" MUST have at least one element."
+        "path": "/"
       }
     ]
   )
@@ -73,6 +75,7 @@ suite('5.5.4 anyOf', () ->
         }
         "level": "error"
         "message": "Elements of \"anyOf\" MUST be objects"
+        "path": "/"
       }
     ]
   )
@@ -113,10 +116,12 @@ suite('5.5.4 anyOf', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/anyOf/0"
           }
         ]
         "level": "error"
         "message": "Elements of \"anyOf\" MUST be valid JSON Schemas"
+        "path": "/"
       }
     ]
   )

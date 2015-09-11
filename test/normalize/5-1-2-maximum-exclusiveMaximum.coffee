@@ -23,6 +23,7 @@ suite('5.1.2 maximum and exclusiveMaximum', () ->
         }
         "level": "error"
         "message": "The value of \"maximum\" MUST be a JSON number."
+        "path": "/"
       }
     ]
   )
@@ -48,6 +49,7 @@ suite('5.1.2 maximum and exclusiveMaximum', () ->
         }
         "level": "error"
         "message": "The value of \"exclusiveMaximum\" MUST be a boolean."
+        "path": "/"
       }
     ]
   )
@@ -73,6 +75,7 @@ suite('5.1.2 maximum and exclusiveMaximum', () ->
         }
         "level": "error"
         "message": "If \"exclusiveMaximum\" is present, \"maximum\" MUST also be present."
+        "path": "/"
       }
     ]
   )

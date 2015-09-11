@@ -22,6 +22,7 @@ suite('5.4.5 dependencies', () ->
         }
         "level": "error"
         "message": "The value of \"dependencies\" MUST be an object."
+        "path": "/"
       }
     ]
   )
@@ -49,6 +50,7 @@ suite('5.4.5 dependencies', () ->
         }
         "level": "error"
         "message": "Each value of \"dependencies\" MUST be either an object or an array."
+        "path": "/"
       }
     ]
   )
@@ -89,10 +91,12 @@ suite('5.4.5 dependencies', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/dependencies/a"
           }
         ]
         "level": "error"
         "message": "If the value in \"dependencies\" is an object, it MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -121,6 +125,7 @@ suite('5.4.5 dependencies', () ->
         }
         "level": "error"
         "message": "If the value in \"dependencies\" is an array, it MUST have at least one element."
+        "path": "/"
       }
     ]
   )
@@ -151,6 +156,7 @@ suite('5.4.5 dependencies', () ->
         }
         "level": "error"
         "message": "If the value in \"dependencies\" is an array, each element MUST be a string."
+        "path": "/"
       }
     ]
   )
@@ -186,6 +192,7 @@ suite('5.4.5 dependencies', () ->
         }
         "level": "error"
         "message": "If the value in \"dependencies\" is an array, elements in the array MUST be unique."
+        "path": "/"
       }
     ]
   )

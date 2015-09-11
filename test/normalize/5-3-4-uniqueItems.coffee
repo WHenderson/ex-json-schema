@@ -22,6 +22,7 @@ suite('5.3.4 uniqueItems', () ->
         }
         "level": "error"
         "message": "The value of \"uniqueItems\" keyword MUST be a boolean"
+        "path": "/"
       }
     ]
   )

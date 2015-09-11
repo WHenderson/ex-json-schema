@@ -24,6 +24,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "The value of \"additionalProperties\" MUST be a boolean or an object."
+        "path": "/"
       }
     ]
   )
@@ -62,10 +63,12 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/additionalProperties"
           }
         ]
         "level": "error"
         "message": "If \"additionalProperties\" is an object, it MUST also be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -91,6 +94,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "The value of \"properties\" object MUST be an object."
+        "path": "/"
       }
     ]
   )
@@ -120,6 +124,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "Each value of \"properties\" MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -168,10 +173,12 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/properties/a"
           }
         ]
         "level": "error"
         "message": "Each value of \"properties\" MUST be a valid JSON Schema."
+        "path": "/"
       }
     ]
   )
@@ -197,6 +204,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "The value of \"patternProperties\" MUST be an object."
+        "path": "/"
       }
     ]
   )
@@ -226,6 +234,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "Each property name of \"patternProperties\" SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect."
+        "path": "/"
       }
     ]
   )
@@ -255,6 +264,7 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
         }
         "level": "error"
         "message": "Each value of \"patternProperties\" object MUST be an object and MUST be a valid JSON Schema"
+        "path": "/"
       }
     ]
   )
@@ -303,10 +313,12 @@ suite('5.4.4 additionalProperties, properties and patternProperties', () ->
               }
             }
             "message": "The value of \"minimum\" MUST be a JSON number."
+            "path": "/patternProperties/."
           }
         ]
         "level": "error"
         "message": "Each value of \"patternProperties\" object MUST be an object and MUST be a valid JSON Schema"
+        "path": "/"
       }
     ]
   )

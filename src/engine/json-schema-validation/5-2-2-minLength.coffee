@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_2_2_1_b = (id, info, nContext) ->
   'The value of "minLength" MUST be greater than, or equal to, 0'
 
 Engine::_m_json_schema_validation__5_2_2_2_a = (id, info, vContext) ->
-  "is shorter than #{partialSchema.minLength} characters"
+  "is shorter than #{info.partialSchema.minLength} characters"
 
 Engine::_n_json_schema_validation__5_2_2_minLength = (nContext) ->
   cls = @constructor

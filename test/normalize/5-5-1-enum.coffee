@@ -22,6 +22,7 @@ suite('5.5.1 enum', () ->
         }
         "level": "error"
         "message": "The value of \"enum\" MUST be an array."
+        "path": "/"
       }
     ]
   )
@@ -45,6 +46,7 @@ suite('5.5.1 enum', () ->
         }
         "level": "error"
         "message": "The value of \"enum\" MUST have at least one element."
+        "path": "/"
       }
     ]
   )
@@ -93,6 +95,7 @@ suite('5.5.1 enum', () ->
         }
         "level": "error"
         "message": "Elements in \"enum\" MUST be unique."
+        "path": "/"
       }
     ]
   )

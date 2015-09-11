@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_3_3_1_b = (id, info, nContext) ->
   'The value of "minItems" MUST be greater than, or equal to, 0'
 
 Engine::_m_json_schema_validation__5_3_3_2_a = (id, info, vContext) ->
-  "has less than #{partialSchema.minItems} elements"
+  "has less than #{info.partialSchema.minItems} elements"
 
 Engine::_n_json_schema_validation__5_3_3_minItems = (nContext) ->
   cls = @constructor

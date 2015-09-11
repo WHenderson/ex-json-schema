@@ -5,7 +5,7 @@ Engine::_m_json_schema_validation__5_4_1_1_b = (id, info, nContext) ->
   'The value of "maxProperties" MUST be greater than, or equal to, 0.'
 
 Engine::_m_json_schema_validation__5_4_1_2_a = (id, info, vContext) ->
-  "has more than #{partialSchema.maxProperties} properties"
+  "has more than #{info.partialSchema.maxProperties} properties"
 
 Engine::_n_json_schema_validation__5_4_1_maxProperties = (nContext) ->
   cls = @constructor
@@ -33,7 +33,7 @@ Engine::_n_json_schema_validation__5_4_1_maxProperties = (nContext) ->
 Engine::_c_json_schema_validation__5_4_1_maxProperties = (cContext) ->
   cls = @constructor
   ps = {
-    maxProperties: cContext.nodeIn.maxProperties
+    maxProperties: cContext.node.maxProperties
   }
 
   if ps.maxProperties == undefined
