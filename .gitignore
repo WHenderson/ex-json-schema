@@ -5,6 +5,9 @@ coverage
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
+# Testing results, only used for comparison
+test-results
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 dist
 
